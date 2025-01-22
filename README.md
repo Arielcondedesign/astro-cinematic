@@ -1,6 +1,6 @@
-# Stone: Astro Theme
+# Cinematic: Astro Theme
 
-Stone is a free and open-source Astro theme specially designed for Business, Marketing, SaaS and Startup websites.
+An Astro theme specifically designed for audiovisual production companies seeking optimal web performance and impactful cinematic presentation.
 
 ## Key Features:
 
