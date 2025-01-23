@@ -1,0 +1,68 @@
+---
+import { YouTube } from '@astro-community/astro-embed-youtube';
+
+const { 
+title, 
+description, 
+year, 
+category 
+} = Astro.props;
+
+const projects = [
+{
+    videoUrl: "false",
+    videoLink: "https://www.youtube.com/watch?v=i4dSzxw8Iho",
+    thumbnailUrl: "/assets/femmes-resistance-franquisme-memoire-poster.webp", 
+    posterText: "Installation de femmes républicaines dans les prisons de Franco",
+    highlightedParagraph: "PRISON POUR FEMMES, ESPAGNE. L'HUMILATION Comme les gens L'IGNOMINIE \"Enquêtes psychologiques sur les femmes marxistes délinquantes\" DÉGRADATION en tant que mères \"Dans les bras, les créatures sont mortes: mangées par la faim, les poux et la maladie\" LA MORTIFICATION En tant que femmes \"La punition divine s'est faite chair dans notre corps\" LA DEPRECIATION En tant que citoyens \"Nous sortons de prison et continuons à être méfiants\""
+  }
+];
+---
+<section class="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+  {projects.map((project) => (
+    <div class={`w-full pt-16 pb-16 ${project.bgColor}`}>
+      <div class="flex flex-col items-center">
+        <div class="mb-4 w-full max-w-2xl">
+          <img 
+            src={project.thumbnailUrl} 
+            alt="Póster destacado" 
+            class="aspect-auto rounded-lg shadow-lg" 
+            style={{ objectFit: 'cover' }} 
+          />
+        </div>
+
+        <div class="text-center mb-4">
+          <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">
+            {project.posterText}
+          </h2>
+          <p class="mt-2 text-gray-700">{project.highlightedParagraph}</p>
+        </div>
+
+        <div class="video-container mb-4 w-full max-w-2xl">
+          {project.videoUrl !== "false" ? (
+            <Vimeo id={project.videoUrl} class="aspect-video" />
+          ) : project.videoLink !== "false" ? (
+            <YouTube id={project.videoLink.split('v=')[1].split('&')[0]} class="aspect-video" />
+          ) : null}
+        </div>
+
+        <div class="mt-8 w-full max-w-lg text-center">
+          <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">
+            {project.title}
+          </h2>
+          <div class="mt-4 text-gray-700">
+            <p>{project.description}</p>
+          </div>
+        </div>
+
+        <div class="mt-4 text-center">
+          <h3 class="font-bold">Notas de Prensa</h3>
+          <p>
+            "La palabra no dicha en La Cárcel." 
+            <a href="https://eladelantado.com/segovia/la-palabra-no-dicha-en-la-carcel/" target="_blank" class="text-blue-600 underline">Leer más</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  ))}
+</section>

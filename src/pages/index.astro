@@ -1,21 +1,19 @@
 ---
-import About from '../components/home/About.astro';
-import Cta from '../components/home/Cta.astro';
-import Expertise from '../components/home/Expertise.astro';
 import Hero from '../components/home/Hero.astro';
+import About from '../components/home/About.astro';
+import Gallery from '../components/home/Gallery.astro';
 import Services from '../components/home/Services.astro';
-import Testimonials from '../components/home/Testimonials.astro';
+import Cta from '../components/home/Cta.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  description="Stone is a premium Astro theme specially designed for Business, Marketing, SaaS and Startup websites."
-  title="Stone · Premium Astro template"
+  description="La Jetée Films : On crée des longs-métrages, courts-métrages et expos qui donnent une voix aux histoires oubliées, con. Chaque œuvre, un acte de résistance contre l'oubli. Venez découvrir nos récits engagés !"
+  title="La Jetée Films | Accueil - Documentaires et Expositions"
 >
   <Hero />
-  <Services />
-  <Expertise />
   <About />
-  <Testimonials />
+  <Gallery />
+  <Services />
   <Cta />
 </Layout>

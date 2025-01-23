@@ -1,46 +1,26 @@
 ---
 const bottomLinks = [
-  {
-    header: 'Social',
+{
+    header: 'Navigation',
     links: [
       {
-        name: 'Github',
-        href: 'https://github.com/',
-        isExternal: true,
-      },
-      {
-        name: 'Twitter',
-        href: 'https://twitter.com/',
-        isExternal: true,
-      },
-      {
-        name: 'Instagram',
-        href: 'https://instagram.com/',
-        isExternal: true,
-      },
-      {
-        name: 'Facebook',
-        href: 'https://facebook.com/',
-        isExternal: true,
-      },
-    ],
-  },
-  {
-    header: 'Company',
-    links: [
-      {
-        name: 'Home',
+        name: 'Accueil',
         href: '/',
         isExternal: false,
       },
       {
-        name: 'About',
-        href: '/about',
+        name: 'À propos',
+        href: '/apropos',
         isExternal: false,
       },
       {
-        name: 'Pricing',
-        href: '/pricing',
+        name: 'Films',
+        href: '/films',
+        isExternal: false,
+      },
+      {
+        name: 'Installations',
+        href: '/installations',
         isExternal: false,
       },
       {
@@ -51,22 +31,22 @@ const bottomLinks = [
     ],
   },
   {
-    header: 'Legal',
+    header: 'Mentions légales',
     links: [
       {
-        name: 'Privacy',
-        href: '/privacy',
+        name: 'Politique de Confidentialité',
+        href: '/confidentialite',
         isExternal: false,
       },
+    ],
+  },
+  {
+    header: 'Réseaux sociaux',
+    links: [
       {
-        name: '404',
-        href: '/404',
-        isExternal: false,
-      },
-      {
-        name: 'Styleguide',
-        href: '/styleguide',
-        isExternal: false,
+        name: 'Vimeo',
+        href: 'https://vimeo.com/lajeteefilms',
+        isExternal: true,
       },
     ],
   },
@@ -85,14 +65,13 @@ const bottomLinks = [
           class="h-8 w-auto"
           width="65"
           height="40"
-          :src="$store.theme.isDark ? '/assets/logo-inverted.svg' : '/assets/logo.svg'"
-          alt="Stone"
+          :src="$store.theme.isDark ? '/assets/la-jetee-films-brand.png' : '/assets/la-jetee-films-brand.png'"
+          alt="La Jetée Films"
         />
         <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
-          Stone is a premium Astro theme specially designed for Business, Marketing, SaaS and
-          Startup websites.
+          Échos dans l'Ombre : Révéler ce que le Système Fait Taire.
         </p>
-        <p class="text-primary-950/70 dark:text-primary-200/70 text-sm">© 2023 Stone</p>
+        <p class="text-primary-950/70 dark:text-primary-200/70 text-sm">© 2025 Regeneralia</p>
       </div>
 
       <!-- Bottom links -->

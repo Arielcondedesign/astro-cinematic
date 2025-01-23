@@ -1,0 +1,89 @@
+---
+import { Vimeo } from '@astro-community/astro-embed-vimeo';
+import { YouTube } from '@astro-community/astro-embed-youtube';
+
+const { 
+title, 
+description, 
+year, 
+category 
+} = Astro.props;
+
+const projects = [
+{
+    title: "Memorias de la Esperanza",
+    description: "Musée des sciences naturelles de Ciudad de la Plata, Argentine. À travers des plaques de verre de 1905, nous voyageons jusqu'à son origine. Les villes d'origine de Jujui racontent leur recherche de mémoire.",
+    videoUrl: "https://vimeo.com/535572445",
+    videoLink: "false",
+    thumbnailUrl: "url-de-votre-image-1",
+    year: "2009",
+    category: "Catégorie A",
+    bgColor: "bg-indigo-700"
+},
+{
+    title: "El retorno del avefría",
+    description: "Le théâtre humanise. Voyage d'un oiseau: un vanneau, qui atteint une ville et trouve ses rues pleines d'activité artistique. Une ville de pierre, la tendresse du théâtre.",
+    videoUrl: "false",
+    videoLink: "https://www.youtube.com/watch?v=h8q49pSEIxs",
+    thumbnailUrl: "url-de-votre-image-2",
+    year: "2012",
+    category: "Catégorie B",
+    bgColor: "bg-green-100"
+},
+{
+    title: "Esperando a Godot",
+    description: "Film sur Fernando Urdiales, un grand dramaturge castillan et leonés décédé à Valladolid en 2010.",
+    videoUrl: "https://vimeo.com/535572447",
+    thumbnailUrl: "url-de-votre-image-3",
+    year: "2014",
+    category: "Catégorie C",
+    bgColor: "bg-yellow-100"
+},
+{
+    title: "Trailer Agapito Marazuela, La statue brisée",
+    description: "Portrait d'un musicien universel: Agapito Marazuela. Grand homme qui a eu une vie qui montre les circonstances historiques du 20e siècle en Espagne: joie pour la culture, dictatures, répression, misère, peur, oubli.",
+    videoUrl: "https://vimeo.com/508785843",
+    thumbnailUrl: "url-de-votre-image-3",
+    year: "2019",
+    category: "Catégorie C",
+    bgColor: "bg-yellow-100"
+}
+];
+---
+<section>
+    {projects.map((project) => (
+      <div class={`w-full pt-16 pb-16 ${project.bgColor}`}>
+        <div class="grid grid-cols-1 md:grid-cols-4 md:items-center md:gap-8">
+          <div class="md:col-span-3">
+            <div class="video-container">
+              {project.videoUrl !== "false" ? (
+                <Vimeo id={project.videoUrl} class="aspect-video" />
+              ) : project.videoLink !== "false" ? (
+                <YouTube id={project.videoLink.split('v=')[1].split('&')[0]} class="aspect-video" />
+              ) : null}
+            </div>
+          </div>
+  
+          <div class="md:col-span-1">
+            <div class="max-w-lg md:max-w-none">
+              <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">
+                {project.title}
+              </h2>
+  
+              <div class="mt-4 text-gray-700">
+                <p>{project.description}</p>
+                
+                <div class="project-metadata mt-4">
+                  <h3 class="font-bold">Détails du projet</h3>
+                  <ul class="list-disc pl-5">
+                    <li>Año: {project.year}</li>
+                    <li>Categoría: {project.category}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+</section>

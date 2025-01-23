@@ -1,0 +1,81 @@
+---
+import { Vimeo } from '@astro-community/astro-embed-vimeo';
+import { YouTube } from '@astro-community/astro-embed-youtube';
+
+const { 
+title, 
+description, 
+year, 
+category 
+} = Astro.props;
+
+const projects = [
+{
+    title: "El túnel",
+    description: "À partir des voix des femmes victimes de maltraitance, un discours d'images poétiques s'articule.",
+    videoUrl: "https://vimeo.com/492102124",
+    videoLink: "false",
+    thumbnailUrl: "url-de-votre-image-1",
+    year: "2005",
+    category: "Catégorie A",
+    bgColor: "bg-indigo-700"
+},
+{
+    title: "Laberinto de Prisiones",
+    description: "Entretiens avec deux hommes en prison pour avoir maltraité leurs partenaires.",
+    videoUrl: "false",
+    videoLink: "https://www.youtube.com/watch?v=2OYSBhMoU8Q",
+    thumbnailUrl: "url-de-votre-image-2",
+    year: "2006",
+    category: "Catégorie B",
+    bgColor: "bg-green-100"
+},
+{
+    title: "El engaño del colibrí",
+    description: "Court métrage résultant d'un voyage à la Triple Frontière et de la rencontre des habitants de ces terres contre la richesse des grandes sociétés forestières.",
+    videoUrl: "false",
+    videoLink: "https://www.youtube.com/watch?v=qUHAiTgspDc&t=1s",
+    thumbnailUrl: "url-de-votre-image-3",
+    year: "2014",
+    category: "Catégorie C",
+    bgColor: "bg-yellow-100"
+}
+];
+---
+<section>
+    {projects.map((project) => (
+      <div class={`w-full pt-16 pb-16 ${project.bgColor}`}>
+        <div class="grid grid-cols-1 md:grid-cols-4 md:items-center md:gap-8">
+          <div class="md:col-span-3">
+            <div class="video-container">
+              {project.videoUrl !== "false" ? (
+                <Vimeo id={project.videoUrl} class="aspect-video" />
+              ) : project.videoLink !== "false" ? (
+                <YouTube id={project.videoLink.split('v=')[1].split('&')[0]} class="aspect-video" />
+              ) : null}
+            </div>
+          </div>
+  
+          <div class="md:col-span-1">
+            <div class="max-w-lg md:max-w-none">
+              <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">
+                {project.title}
+              </h2>
+  
+              <div class="mt-4 text-gray-700">
+                <p>{project.description}</p>
+                
+                <div class="project-metadata mt-4">
+                  <h3 class="font-bold">Détails du projet</h3>
+                  <ul class="list-disc pl-5">
+                    <li>Año: {project.year}</li>
+                    <li>Categoría: {project.category}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+</section>

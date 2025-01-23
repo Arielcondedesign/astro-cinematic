@@ -2,21 +2,26 @@
 const links = [
   {
     ref: '01',
-    name: 'Home',
+    name: 'Accueil',
     href: '/',
   },
   {
     ref: '02',
-    name: 'About',
-    href: '/about',
+    name: 'À propos',
+    href: '/apropos',
   },
   {
     ref: '03',
-    name: 'Pricing',
-    href: '/pricing',
+    name: 'Films',
+    href: '/films',
   },
   {
     ref: '04',
+    name: 'Installations',
+    href: '/installations',
+  },
+  {
+    ref: '05',
     name: 'Contact',
     href: '/contact',
   },
@@ -37,12 +42,12 @@ const links = [
         href="/"
         class="focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200 rounded-md focus-visible:outline focus-visible:outline-2"
       >
-        <span class="sr-only">Stone</span>
+        <span class="sr-only">La Jetée Films</span>
         <img
           class="h-8 w-auto"
           width="65"
           height="40"
-          :src="$store.theme.isDark ? '/assets/logo-inverted.svg' : '/assets/logo.svg'"
+          :src="$store.theme.isDark ? '/assets/la-jetee-films-brand.png' : '/assets/la-jetee-films-brand.png'"
           alt="Stone"
         />
       </a>
@@ -141,8 +146,9 @@ const links = [
         <p
           class="text-primary-950/70 dark:text-primary-200/70 max-w-sm text-xl italic leading-loose"
         >
-          <span class="font-medium">Stone</span> is a premium Astro theme specially designed for
-          Business, Marketing, SaaS and Startup websites.
+          <span class="font-medium"></span> "Tant que tu n'atteins pas la vérité, tu ne peux la corriger. Donc, si tu ne peux la corriger, tu ne pourras jamais l'atteindre. En attendant, ne te résigne pas."
+          <br>
+          — José Saramago.
         </p>
       </div>
 
