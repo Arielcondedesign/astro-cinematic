@@ -18,10 +18,14 @@
     "@types/alpinejs": "3.7.2",
     "alpinejs": "3.12.3",
     "astro": "^5.1.8",
+    "astro-carousel": "^3.0.2",
     "astro-compress": "^2.3.6",
     "prettier": "3.0.2",
     "prettier-plugin-astro": "0.12.0",
     "prettier-plugin-tailwindcss": "0.5.3",
     "tailwindcss": "3.3.3"
+  },
+  "devDependencies": {
+    "sass-embedded": "^1.83.4"
   }
 }

@@ -1,3 +1,8 @@
+---
+import { Image } from 'astro:assets';
+import localBirdImage from '/assets/narratives-resistance-documentation-margins-hero.webp';
+---
+
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="flex flex-col gap-16">
@@ -11,12 +16,14 @@
           </p>
         </div>
       </div>
-      <img
+      <Image
         class="h-auto w-full rounded-3xl"
-        width="1280"
-        height="640"
         src="/assets/narratives-resistance-documentation-margins-hero.webp"
         alt="La Jetée Films - Documenter les Marges du Réel"
+        width={1280}
+        height={640}
+        loading="lazy"
+        decoding="async"
       />
     </div>
   </div>
