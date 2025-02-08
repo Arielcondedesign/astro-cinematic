@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import ctaImage from '/public/assets/recits-resistance-nature-globale.webp';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<Image
+  src={ctaImage}
+  alt="Récits de résistance et de nature - La Jetée Films"
+  width={1280}
+  height={640}
+  class={className}
+  loading="lazy"
+  decoding="async"
+/> 

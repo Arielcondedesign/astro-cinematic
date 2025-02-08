@@ -1,0 +1,21 @@
+---
+import { Image } from 'astro:assets';
+// Ajusta aquesta ruta segons on tinguis realment les imatges
+import filmsImage from '/public/assets/la-jetee-films-peliculas-home.webp';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<Image
+  src={filmsImage}
+  alt="Films - La Jetée Films"
+  width={800}
+  height={400}
+  class={className}
+  loading="lazy"
+  decoding="async"
+/> 

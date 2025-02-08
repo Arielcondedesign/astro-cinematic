@@ -1,34 +1,42 @@
 ---
+import TeamLidiaImage from '../images/TeamLidiaImage.astro';
+import TeamBastianImage from '../images/TeamBastianImage.astro';
+import TeamJuanImage from '../images/TeamJuanImage.astro';
+import TeamTheoImage from '../images/TeamTheoImage.astro';
+import TeamAfricaImage from '../images/TeamAfricaImage.astro';
+import TeamEduardoImage from '../images/TeamEduardoImage.astro';
+// ... altres imports d'imatges
+
 const team = [
   {
     name: 'Lidia Martín Merino',
-    image: '/assets/lidia-martin-merino-directrice-documentaire.webp',
+    image: TeamLidiaImage,
     job: 'Directrice et Réalisatrice',
   },
   {
     name: 'Bastian Sinsé',
-    image: '/assets/bastian-sinse-post-production.webp',
+    image: TeamBastianImage,
     job: 'Post-Production Audiovisuel',
   },
   {
     name: 'Juan Manuel Rosas',
-    image: '/assets/juan-manuel-rosas-cameraman.webp',
+    image: TeamJuanImage,
     job: 'Cadreur, Directeur Adjoint',
   },
   {
     name: 'Théo Heldmann',
-    image: '/assets/theo-monteur-video.webp',
+    image: TeamTheoImage,
     job: 'Monteur',
   },
   
   {
     name: 'Africa Bayón',
-    image: '/assets/africa-bayon-scenographe.webp',
+    image: TeamAfricaImage,
     job: 'Scénographe',
   },
   {
     name: 'Hommage au Maître Monteur',
-    image: '/assets/eduardo-argentinien-monteur-video.webp',
+    image: TeamEduardoImage,
     job: 'Monteur',
   },
 ];
@@ -40,13 +48,13 @@ const team = [
       <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Collectif La Jetée</h2>
       <ul role="list" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {
-          team.map((item) => (
+          team.map(({ name, image: TeamImage, job }) => (
             <li class="border-primary-900/10 dark:border-primary-300/10 rounded-3xl border px-6 py-8">
               <div class="space-y-6">
-                <img class="mx-auto h-auto w-16 rounded-full" src={item.image} alt={item.name} />
+                <TeamImage class="mx-auto h-auto w-16 rounded-full" />
                 <div class="text-center">
-                  <h3 class="text-lg font-medium">{item.name}</h3>
-                  <p class="text-primary-950/70 dark:text-primary-200/70 text-base">{item.job}</p>
+                  <h3 class="text-lg font-medium">{name}</h3>
+                  <p class="text-primary-950/70 dark:text-primary-200/70 text-base">{job}</p>
                 </div>
               </div>
             </li>

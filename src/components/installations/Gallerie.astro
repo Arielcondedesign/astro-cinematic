@@ -1,52 +1,199 @@
+---
+import GalleryImage from '../images/GalleryImage.astro';
+
+const images = [
+  {
+    src: "/assets/femmes-resistance-franquisme-memoire-poster.webp",
+    alt: "Affiche de l'exposition sur la résistance des femmes"
+  },
+  {
+    src: "/assets/femmes-resistance-franquisme-memoire-ombre.webp",
+    alt: "Ombres et mémoire"
+  },
+  {
+    src: "/assets/femmes-resistance-franquisme-memoire-apothicaire.webp",
+    alt: "L'apothicaire"
+  },
+  {
+    src: "/assets/femmes-resistance-franquisme-memoire-broderie.webp",
+    alt: "Description 2"
+  },
+  {
+    src: "/assets/femmes-resistance-franquisme-memoire-carmen.webp",
+    alt: "Description 3"
+  },
+  {
+    src: "/assets/femmes-resistance-franquisme-memoire-croiser.webp",
+    alt: "Description 4"
+  },
+  {
+    src: "/assets/femmes-resistance-franquisme-memoire-discours.webp",
+    alt: "Description 5"
+  },
+  {
+    src: "/assets/femmes-resistance-franquisme-memoire-espace.webp",
+    alt: "Description 6"
+  },
+  {
+    src: "/assets/femmes-resistance-franquisme-memoire-espace2.webp",
+    alt: "Description 7"
+  },
+  {
+    src: "/assets/femmes-resistance-franquisme-memoire-lit.webp",
+    alt: "Description 8"
+  },
+  {
+    src: "/assets/femmes-resistance-franquisme-memoire-machine-a-coudre.webp",
+    alt: "Description 9"
+  },
+  {
+    src: "/assets/femmes-resistance-franquisme-memoire-maria.webp",
+    alt: "Description 10"
+  },
+  {
+    src: "/assets/femmes-resistance-franquisme-memoire-marmite.webp",
+    alt: "Description 11"
+  },
+  {
+    src: "/assets/femmes-resistance-franquisme-memoire-mobile.webp",
+    alt: "Description 12"
+  }
+];
+---
+
 <section class="py-12 bg-gray-100">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-8">Galerie de photos</h2>
-      <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-        <div class="overflow-hidden rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
-            <img src="/assets/femmes-resistance-franquisme-memoire-poster.webp" alt="Descripción 13" class="w-full h-48 object-cover" />
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-8">Galerie de photos</h2>
+    
+    <!-- Masonry grid -->
+    <div class="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4" id="gallery-grid">
+      {images.map((image, index) => (
+        <button 
+          class="group relative w-full block break-inside-avoid cursor-pointer hover:opacity-60 transition-opacity"
+          data-index={index}
+        >
+          <div class="relative rounded-lg overflow-hidden">
+            <GalleryImage
+              src={image.src}
+              alt={image.alt}
+              class="w-full h-auto object-cover"
+            />
+            <div class="absolute inset-0 bg-primary-950/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="text-white text-sm">Cliquez pour agrandir</span>
+            </div>
           </div>
-          <div class="overflow-hidden rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
-            <img src="/assets/femmes-resistance-franquisme-memoire-ombre.webp" alt="Descripción 13" class="w-full h-48 object-cover" />
+        </button>
+      ))}
+    </div>
+
+    <!-- Modal del carrusel -->
+    <div id="gallery-modal" class="fixed inset-0 bg-primary-950/85 backdrop-blur-sm z-50 hidden">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="relative w-full max-w-7xl mx-auto px-4">
+          <!-- Imatge principal -->
+          <div class="relative">
+            <div id="modal-slider" class="flex transition-transform duration-300">
+              {images.map((image) => (
+                <div class="w-full flex-shrink-0 px-4">
+                  <GalleryImage
+                    src={image.src}
+                    alt={image.alt}
+                    class="w-full h-auto max-h-[80vh] object-contain mx-auto"
+                  />
+                  <div class="flex justify-center">
+                    <p class="text-primary-50 bg-primary-950/90 hover:bg-primary-950/80 text-center mt-4 py-2 px-8 rounded-xl">{image.alt}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div class="overflow-hidden rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
-            <img src="/assets/femmes-resistance-franquisme-memoire-apothicaire.webp" alt="Descripción 1" class="w-full h-48 object-cover" />
-          </div>
-          <div class="overflow-hidden rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
-            <img src="/assets/femmes-resistance-franquisme-memoire-broderie.webp" alt="Descripción 2" class="w-full h-48 object-cover" />
-          </div>
-          <div class="overflow-hidden rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
-            <img src="/assets/femmes-resistance-franquisme-memoire-carmen.webp" alt="Descripción 3" class="w-full h-48 object-cover" />
-          </div>
-          <div class="overflow-hidden rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
-            <img src="/assets/femmes-resistance-franquisme-memoire-croiser.webp" alt="Descripción 4" class="w-full h-48 object-cover" />
-          </div>
-          <div class="overflow-hidden rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
-            <img src="/assets/femmes-resistance-franquisme-memoire-discours.webp" alt="Descripción 5" class="w-full h-48 object-cover" />
-          </div>
-          <div class="overflow-hidden rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
-            <img src="/assets/femmes-resistance-franquisme-memoire-espace.webp" alt="Descripción 6" class="w-full h-48 object-cover" />
-          </div>
-          <div class="overflow-hidden rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
-            <img src="/assets/femmes-resistance-franquisme-memoire-espace2.webp" alt="Descripción 7" class="w-full h-48 object-cover" />
-          </div>
-          <div class="overflow-hidden rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
-            <img src="/assets/femmes-resistance-franquisme-memoire-lit.webp" alt="Descripción 8" class="w-full h-48 object-cover" />
-          </div>
-          <div class="overflow-hidden rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
-            <img src="/assets/femmes-resistance-franquisme-memoire-machine-a-coudre.webp" alt="Descripción 9" class="w-full h-48 object-cover" />
-          </div>
-          <div class="overflow-hidden rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
-            <img src="/assets/femmes-resistance-franquisme-memoire-maria.webp" alt="Descripción 10" class="w-full h-48 object-cover" />
-          </div>
-          <div class="overflow-hidden rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
-            <img src="/assets/femmes-resistance-franquisme-memoire-marmite.webp" alt="Descripción 11" class="w-full h-48 object-cover" />
-          </div>
-          <div class="overflow-hidden rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
-            <img src="/assets/femmes-resistance-franquisme-memoire-mobile.webp" alt="Descripción 12" class="w-full h-48 object-cover" />
-          </div>
-        <!-- Añade más imágenes según sea necesario -->
+
+          <!-- Controls -->
+          <button 
+            id="modal-prev"
+            class="absolute left-4 top-1/2 -translate-y-1/2 bg-primary-950/90 hover:bg-primary-950/80 p-4 px-6 rounded-xl transition-colors"
+            aria-label="Image précédente"
+          >
+            <span class="text-white text-2xl">←</span>
+          </button>
+          <button 
+            id="modal-next"
+            class="absolute right-4 top-1/2 -translate-y-1/2 bg-primary-950/90 hover:bg-primary-950/80 p-4 px-6 rounded-xl transition-colors"
+            aria-label="Image suivante"
+          >
+            <span class="text-white text-2xl">→</span>
+          </button>
+
+          <!-- Botó tancar -->
+          <button 
+            id="modal-close"
+            class="absolute top-4 right-4 text-white bg-primary-950/90 hover:bg-primary-950/80 p-2 px-3 rounded-full transition-colors"
+            aria-label="Fermer"
+          >
+            ✕
+          </button>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<script>
+  let currentSlide = 0;
+  const modal = document.getElementById('gallery-modal');
+  const modalSlider = document.getElementById('modal-slider');
+  const prevBtn = document.getElementById('modal-prev');
+  const nextBtn = document.getElementById('modal-next');
+  const closeBtn = document.getElementById('modal-close');
+  const thumbnails = document.querySelectorAll('#gallery-grid button');
+  const totalSlides = thumbnails.length;
+
+  function updateSlider() {
+    modalSlider.style.transform = `translateX(-${currentSlide * 100}%)`;
+  }
+
+  function openModal(index) {
+    currentSlide = index;
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    updateSlider();
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  // Event Listeners
+  thumbnails.forEach((thumb, index) => {
+    thumb.addEventListener('click', () => openModal(index));
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentSlide = currentSlide === 0 ? totalSlides - 1 : currentSlide - 1;
+    updateSlider();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentSlide = currentSlide === totalSlides - 1 ? 0 : currentSlide + 1;
+    updateSlider();
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('hidden')) {
+      if (e.key === 'ArrowLeft') prevBtn.click();
+      if (e.key === 'ArrowRight') nextBtn.click();
+      if (e.key === 'Escape') closeModal();
+    }
+  });
+
+  // Click outside to close
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+</script>
 
   

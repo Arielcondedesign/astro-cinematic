@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import missionImage2 from '/public/assets/masque-portrait.webp';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<Image
+  src={missionImage2}
+  alt="Portrait avec masque - La Jetée Films"
+  width={576}
+  height={768}
+  class={className}
+  loading="lazy"
+  decoding="async"
+/> 

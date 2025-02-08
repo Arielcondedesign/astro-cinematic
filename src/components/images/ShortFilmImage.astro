@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import shortFilmImage from '/public/assets/arbre-deracine-bolivie.webp';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<Image
+  src={shortFilmImage}
+  alt="Paysage avec un arbre déraciné en Bolivie - Accès aux courtsmétrages documentaires de La Jetée Films"
+  width={800}
+  height={400}
+  class={className}
+  loading="eager"
+  decoding="sync"
+/> 

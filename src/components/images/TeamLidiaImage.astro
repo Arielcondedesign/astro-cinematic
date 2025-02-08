@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import teamImage from '/public/assets/lidia-martin-merino-directrice-documentaire.webp';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<Image
+  src={teamImage}
+  alt="Lidia Martín Merino - Directrice et Réalisatrice"
+  width={400}
+  height={400}
+  class={className}
+  loading="lazy"
+  decoding="async"
+/> 

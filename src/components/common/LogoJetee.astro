@@ -1,0 +1,32 @@
+---
+interface Props {
+  class?: string;
+  width?: number;
+  height?: number;
+}
+
+const { 
+  class: className = "h-8 w-auto", 
+  width = 124, 
+  height = 18 
+} = Astro.props;
+---
+
+<div class={className} role="img" aria-label="La Jetée Films">
+  <svg 
+    width={width} 
+    height={height}
+    viewBox="0 0 124 18" 
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
+    loading="eager"
+    fetchpriority="high"
+  >
+    <title>La Jetée Films Logo</title>
+    <desc>Logo officiel de La Jetée Films</desc>
+    <!-- Aquí aniria el path del teu SVG -->
+    <path d="M0 0h124v18H0z"/>
+  </svg>
+</div> 

@@ -1,5 +1,7 @@
 ---
 import { YouTube } from '@astro-community/astro-embed-youtube';
+import { Image } from 'astro:assets';
+import posterImage from '/public/assets/femmes-resistance-franquisme-memoire-poster.webp';
 
 const { 
 title, 
@@ -12,7 +14,7 @@ const projects = [
 {
     videoUrl: "false",
     videoLink: "https://www.youtube.com/watch?v=i4dSzxw8Iho",
-    thumbnailUrl: "/assets/femmes-resistance-franquisme-memoire-poster.webp", 
+    thumbnailUrl: posterImage,
     posterText: "PRISON DE FEMMES, ESPAGNE. L'HUMILATION, L'IGNOMINIE, LA DÉGRADATION, LA MORTIFICATION, LE MÉPRIS",
     highlightedParagraph: "PRISON POUR FEMMES, ESPAGNE. L'HUMILATION Comme les gens L'IGNOMINIE \"Enquêtes psychologiques sur les femmes marxistes délinquantes\" DÉGRADATION en tant que mères \"Dans les bras, les créatures sont mortes: mangées par la faim, les poux et la maladie\" LA MORTIFICATION En tant que femmes \"La punition divine s'est faite chair dans notre corps\" LA DEPRECIATION En tant que citoyens \"Nous sortons de prison et continuons à être méfiants\""
   }
@@ -23,11 +25,15 @@ const projects = [
     <div class={`w-cover pt-16 pb-16 ${project.bgColor}`}>
       <div class="flex flex-col items-center">
         <div class="mb-4 h-full max-w-2xl">
-          <img 
+          <Image 
             src={project.thumbnailUrl} 
-            alt="Póster destacado" 
+            alt={project.posterText}
             class="aspect-auto shadow-lg" 
-            style={{ objectFit: 'cover' }} 
+            loading="lazy"
+            decoding="async"
+            width={800}
+            height={600}
+            quality="high"
           />
         </div>
 
@@ -42,7 +48,36 @@ const projects = [
           {project.videoUrl !== "false" ? (
             <Vimeo id={project.videoUrl} class="aspect-video" />
           ) : project.videoLink !== "false" ? (
-            <YouTube id={project.videoLink.split('v=')[1].split('&')[0]} class="aspect-video" />
+            <div class="relative">
+              <div class="aspect-video bg-primary-950/10">
+                <YouTube 
+                  id={project.videoLink.split('v=')[1].split('&')[0]} 
+                  class="absolute inset-0 w-full h-full"
+                  loading="lazy"
+                  params="nocookie=true&rel=0&playsinline=1"
+                  playlabel={`Regarder ${project.posterText}`}
+                />
+              </div>
+              <a 
+                href={project.videoLink}
+                class="absolute inset-0 z-10 flex items-center justify-center bg-primary-950/10 hover:bg-primary-950/20 transition-colors group"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Voir la vidéo sur YouTube: ${project.posterText}`}
+              >
+                <div class="p-4 rounded-full bg-primary-400/10 group-hover:bg-primary-400/20 transition-colors">
+                  <span class="sr-only">Voir sur YouTube: {project.posterText}</span>
+                  <svg 
+                    class="w-12 h-12 text-primary-200" 
+                    viewBox="0 0 24 24" 
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </a>
+            </div>
           ) : null}
         </div>
 
@@ -59,7 +94,14 @@ const projects = [
           <h3 class="font-bold">Communiqués de presse</h3>
           <p>
             "La palabra no dicha en La Cárcel." 
-            <a href="https://eladelantado.com/segovia/la-palabra-no-dicha-en-la-carcel/" target="_blank" class="text-blue-600 underline">Leer más</a>
+            <a 
+              href="https://eladelantado.com/segovia/la-palabra-no-dicha-en-la-carcel/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="text-blue-600 hover:text-blue-800 underline transition-colors"
+            >
+              Leer más
+            </a>
           </p>
         </div>
       </div>

@@ -1,8 +1,6 @@
----
 import TeamLidiaImage from '../images/TeamLidiaImage.astro';
 import TeamBastianImage from '../images/TeamBastianImage.astro';
 import TeamJuanImage from '../images/TeamJuanImage.astro';
-
 
 const teamMembers = [
   {
@@ -20,7 +18,6 @@ const teamMembers = [
     name: "Bastian Sinsé",
     role: "Post-Production Audiovisuel, Monteur et Etalonneur",
     bio: "Experte en narrations de résistance, transformant chaque histoire en acte de résilience.",
-
     socials: {
       x: "#",
       linkedin: "#"
@@ -31,21 +28,18 @@ const teamMembers = [
     name: "Juan Manuel Rosas",
     role: "Camera-man, Directeur Adjoint",
     bio: "Créateur visuel qui donne forme aux récits invisibles et marginalisés.",
-
-
     socials: {
-      x: "#",
+      x: "#", 
       linkedin: "#"
     }
   }
 ];
----
 
 <section class="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-12">
       <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
-        L'Équipe d'Installations
+        L'Équipe de La Jetée Films
       </h2>
       <p class="mt-4 text-lg text-gray-600">
         Les architectes des narratives documentaires qui défient le silence
@@ -57,12 +51,28 @@ const teamMembers = [
         <div class="bg-primary-400/10 shadow-lg rounded-lg overflow-hidden">
           <TeamImage class="w-full h-64 object-cover object-center" />
           <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-900">{name}</h3>
-            <p class="text-sm text-gray-500 mt-1">{role}</p>
-            <p class="text-gray-600 mt-4">{bio}</p>
+            <h3 class="text-xl font-semibold text-gray-900">
+              {name}
+            </h3>
+            <p class="text-sm text-gray-500 mt-1">
+              {role}
+            </p>
+            <p class="text-gray-600 mt-4">
+              {bio}
+            </p>
             <div class="mt-4 flex space-x-4">
-              <a href={socials.x} class="text-gray-400 hover:text-black transition">X</a>
-              <a href={socials.linkedin} class="text-gray-400 hover:text-blue-600 transition">LinkedIn</a>
+              <a 
+                href={socials.x} 
+                class="text-gray-400 hover:text-black transition"
+              >
+                X
+              </a>
+              <a 
+                href={socials.linkedin} 
+                class="text-gray-400 hover:text-blue-600 transition"
+              >
+                LinkedIn
+              </a>
             </div>
           </div>
         </div>

@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+import logoSrc from '/public/assets/lajetee-brand.svg';
+
+interface Props {
+  class?: string;
+  isHeader?: boolean;
+}
+
+const { 
+  class: className,
+  isHeader = false
+} = Astro.props;
+---
+
+<Image
+  src={logoSrc}
+  alt="La Jetée Films"
+  width={124}
+  height={18}
+  class={className}
+  loading={isHeader ? "eager" : "lazy"}
+  decoding={isHeader ? "sync" : "async"}
+  fetchpriority={isHeader ? "high" : "auto"}
+  format="svg"
+/> 

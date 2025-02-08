@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '/public/assets/narratives-resistance-documentation-margins-hero.webp';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<Image
+  src={heroImage}
+  alt="La Jetée Films - Documentation des marges de la réalité"
+  width={1280}
+  height={640}
+  class={className}
+  loading="eager"
+  decoding="sync"
+/> 

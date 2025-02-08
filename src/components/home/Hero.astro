@@ -1,6 +1,5 @@
 ---
-import { Image } from 'astro:assets';
-import localBirdImage from '/assets/narratives-resistance-documentation-margins-hero.webp';
+import HeroImage from '../images/HeroImage.astro';
 ---
 
 <section class="py-16 sm:py-20">
@@ -16,15 +15,7 @@ import localBirdImage from '/assets/narratives-resistance-documentation-margins-
           </p>
         </div>
       </div>
-      <Image
-        class="h-auto w-full rounded-3xl"
-        src="/assets/narratives-resistance-documentation-margins-hero.webp"
-        alt="La Jetée Films - Documenter les Marges du Réel"
-        width={1280}
-        height={640}
-        loading="lazy"
-        decoding="async"
-      />
+      <HeroImage class="h-auto w-full rounded-3xl" />
     </div>
   </div>
 </section>

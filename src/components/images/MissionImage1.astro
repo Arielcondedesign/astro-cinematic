@@ -1,0 +1,21 @@
+---
+import { Image } from 'astro:assets';
+import missionImage1 from '/public/assets/panneau-fin-du-monde.webp';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<Image
+  src={missionImage1}
+  alt="Panneau fin du monde - Documentation des marges de la réalité"
+  width={576}
+  height={768}
+  class={className}
+  loading="eager"
+  decoding="sync"
+  fetchpriority="high"
+/> 

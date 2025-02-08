@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import teamImage from '/public/assets/juan-manuel-rosas-cameraman.webp';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<Image
+  src={teamImage}
+  alt="Juan Manuel Rosas - Cadreur, Directeur Adjoint"
+  width={400}
+  height={400}
+  class={className}
+  loading="lazy"
+  decoding="async"
+/> 
