@@ -1,17 +1,19 @@
-import TeamLidiaImage from '../images/TeamLidiaImage.astro';
+import { Image } from 'astro:assets';
+import lidiaImage from '../../assets/lidia-martin-merino-directrice-documentaire.webp';
+import africaImage from '../../assets/africa-bayon-scenographe.webp';
 import TeamBastianImage from '../images/TeamBastianImage.astro';
 import TeamJuanImage from '../images/TeamJuanImage.astro';
 
 const teamMembers = [
   {
-    image: TeamLidiaImage,
+    image: africaImage,
+    name: "Africa Bayón",
+    role: "Scénographe",
+  },
+  {
+    image: lidiaImage,
     name: "Lidia Martín Merino",
-    role: "Directrice et Réalisatrice",
-    bio: "Architecte de mémoires documentaires, engagée dans la capture des voix silenciées.",
-    socials: {
-      x: "#",
-      linkedin: "#"
-    }
+    role: "Directrice",
   },
   {
     image: TeamBastianImage,
