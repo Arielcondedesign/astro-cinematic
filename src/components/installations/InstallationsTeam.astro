@@ -1,10 +1,11 @@
 ---
-import TeamLidiaImage from '../images/TeamLidiaImage.astro';
-import TeamAfricaImage from '../images/TeamAfricaImage.astro';
+import { Image } from 'astro:assets';
+import lidiaImage from '../../assets/lidia-martin-merino-directrice-documentaire.webp';
+import africaImage from '../../assets/africa-bayon-scenographe.webp';
 
 const teamMembers = [
   {
-    image: TeamLidiaImage,
+    image: lidiaImage,
     name: "Lidia Martín Merino",
     role: "Directrice et Réalisatrice",
     bio: "Architecte de mémoires documentaires, engagée dans la capture des voix silenciées.",
@@ -14,7 +15,7 @@ const teamMembers = [
     }
   },
   {
-    image: TeamAfricaImage,
+    image: africaImage,
     name: "Africa Bayón",
     role: "Scénographe",
     bio: "Artisan visuel des histoires passées sous silence, notre scénographe donne forme aux souvenirs et aux rêves des opprimés.",
@@ -38,9 +39,17 @@ const teamMembers = [
     </div>
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-      {teamMembers.map(({ name, image: TeamImage, role, bio, socials }) => (
+      {teamMembers.map(({ name, image, role, bio, socials }) => (
         <div class="bg-primary-400/10 shadow-lg rounded-lg overflow-hidden">
-          <TeamImage class="w-full h-64 object-cover object-center" />
+          {/* Usar el componente Image de astro:assets */}
+          <Image
+            src={image}
+            alt={name}
+            class="w-full h-64 object-cover object-center"
+            width={400} // Ajusta el ancho según sea necesario
+            height={256} // Ajusta la altura según sea necesario
+            loading="lazy" // Carga diferida para mejorar el rendimiento
+          />
           <div class="p-6">
             <h3 class="text-xl font-semibold text-gray-900">{name}</h3>
             <p class="text-sm text-gray-500 mt-1">{role}</p>
@@ -54,4 +63,4 @@ const teamMembers = [
       ))}
     </div>
   </div>
-</section> 
+</section>
