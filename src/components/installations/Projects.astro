@@ -4,19 +4,28 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
 import posterImage from '../../assets/femmes-resistance-franquisme-memoire-poster.webp';
 
 const { 
-title, 
-description, 
-year, 
-category 
+  title, 
+  description, 
+  year, 
+  category 
 } = Astro.props;
 
 const projects = [
-{
+  {
+    videoUrl: "false",
+    videoLink: "https://www.youtube.com/watch?v=i4dSzxw8Iho",
+    thumbnailUrl: posterImage,
+    posterText: "dsjofidjfdijifo, LA DÉGRADATION, LA MORTIFICATION, LE MÉPRIS",
+    highlightedParagraph: "PRISON POUR FEMMES, ESPAGNE. L'HUMILATION Comme les gens L'IGNOMINIE \"Enquêtes psychologiques sur les femmes marxistes délinquantes\" DÉGRADATION en tant que mères \"Dans les bras, les créatures sont mortes: mangées par la faim, les poux et la maladie\" LA MORTIFICATION En tant que femmes \"La punition divine s'est faite chair dans notre corps\" LA DEPRECIATION En tant que citoyens \"Nous sortons de prison et continuons à être méfiants\"",
+    bgColor: "bg-fourtier-950" // <-- Se agregó una coma aquí
+  },
+  {
     videoUrl: "false",
     videoLink: "https://www.youtube.com/watch?v=i4dSzxw8Iho",
     thumbnailUrl: posterImage,
     posterText: "PRISON DE FEMMES, ESPAGNE. L'HUMILATION, L'IGNOMINIE, LA DÉGRADATION, LA MORTIFICATION, LE MÉPRIS",
-    highlightedParagraph: "PRISON POUR FEMMES, ESPAGNE. L'HUMILATION Comme les gens L'IGNOMINIE \"Enquêtes psychologiques sur les femmes marxistes délinquantes\" DÉGRADATION en tant que mères \"Dans les bras, les créatures sont mortes: mangées par la faim, les poux et la maladie\" LA MORTIFICATION En tant que femmes \"La punition divine s'est faite chair dans notre corps\" LA DEPRECIATION En tant que citoyens \"Nous sortons de prison et continuons à être méfiants\""
+    highlightedParagraph: "PRISON POUR FEMMES, ESPAGNE. L'HUMILATION Comme les gens L'IGNOMINIE \"Enquêtes psychologiques sur les femmes marxistes délinquantes\" DÉGRADATION en tant que mères \"Dans les bras, les créatures sont mortes: mangées par la faim, les poux et la maladie\" LA MORTIFICATION En tant que femmes \"La punition divine s'est faite chair dans notre corps\" LA DEPRECIATION En tant que citoyens \"Nous sortons de prison et continuons à être méfiants\"",
+    bgColor: "bg-primary-950" // <-- Se agregó una coma aquí
   }
 ];
 ---
