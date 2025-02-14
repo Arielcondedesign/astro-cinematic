@@ -13,5 +13,12 @@ export default defineConfig({
   output: 'static',
   build: {
     inlineStylesheets: 'auto'
+  },
+  i18n: {
+    defaultLocale: 'fr',
+    locales: ['fr', 'es', 'en'],
+    routing: {
+      prefixDefaultLocale: true
+    }
   }
 });

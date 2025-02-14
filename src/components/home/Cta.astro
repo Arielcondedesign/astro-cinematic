@@ -1,4 +1,7 @@
 ---
+import { useI18n } from '../../utils/i18n';
+const { lang } = Astro.props; // El idioma se pasa como prop desde la página padre
+const i18n = useI18n(lang);
 import CtaImage from '../images/CtaImage.astro';  
 ---
 
@@ -6,21 +9,21 @@ import CtaImage from '../images/CtaImage.astro';
   <div class="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
     <CtaImage class="w-full h-auto rounded-t-3xl" />
     <div
-      class="bg-primary-400/10 flex flex-col items-center gap-8 rounded-b-3xl pb-16 sm:gap-10 px-6 py-8"
+      class="bg-primary-400/10 flex flex-col items-center gap-8 rounded-b-3xl px-6 py-8 pb-16 sm:gap-10"
     >
       <div class="flex flex-col gap-4 sm:gap-6">
-        <h2 class="mx-auto text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl max-w-full">
-          Nous construisons ensemble des récits qui résistent.
+        <h2 class="mx-auto max-w-full text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+          {i18n.t('cta.title')}
         </h2>
-        <p class="text-primary-950/70 dark:text-primary-200/70 mx-auto max-w-2xl text-lg">
-          Chaque collaboration est une opportunité de donner voix aux histoires silenciées, une autre vision du réel.
+        <p class="text-primary-200/70 mx-auto max-w-2xl text-lg">
+          {i18n.t('cta.subtitle')}
         </p>
       </div>
       <a
         href="/contact"
-        class="bg-primary-600 dark:bg-secondary-400 hover:bg-primary-700 dark:hover:bg-secondary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 mt-4"
+        class="bg-primary-500 hover:bg-primary-400 focus-visible:outline-primary-500 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 mt-4"
       >
-      Collaborer avec nous
+        {i18n.t('cta.button')}
       </a>
     </div>
   </div>

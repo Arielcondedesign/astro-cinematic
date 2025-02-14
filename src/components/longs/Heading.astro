@@ -1,8 +1,15 @@
+---
+import { useI18n } from '../../utils/i18n';
+const { lang } = Astro.props; // El idioma se pasa como prop desde la página padre
+const i18n = useI18n(lang);
+---
+
 <section class="bg-cover bg-center py-16 sm:py-20" style="background-image: url('/assets/gardien-feu-chien-noir.webp');">
   <div class="bg-black bg-opacity-70 mx-auto max-w-2xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="flex flex-col gap-4 sm:gap-6">
-      <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl text-gray-900">Architectes de la Vérité Documentaire</h1>
+      <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl text-gray-900">{i18n.t('longs.heading.title')}</h1>
       <p class="text-gray-800 mx-auto max-w-xl text-lg sm:text-xl">
+        {i18n.t('longs.heading.subtitle')}
       </p>
     </div>
   </div>

@@ -1,0 +1,129 @@
+---
+import { useI18n } from '../../utils/i18n';
+import LocalizedLink from './LocalizedLink.astro';
+import LogoJetee from '../images/LogoJetee.astro';
+
+const { lang } = Astro.props;
+const i18n = useI18n(lang);
+
+const bottomLinks = [
+  {
+    header: i18n.t('footer.nav.title'),
+    links: [
+      {
+        name: i18n.t('nav.home'),
+        href: '/',
+        isExternal: false,
+      },
+      {
+        name: i18n.t('nav.apropos'),
+        href: '/apropos',
+        isExternal: false,
+      },
+      {
+        name: i18n.t('nav.films'),
+        href: '/films',
+        isExternal: false,
+      },
+      {
+        name: i18n.t('nav.contact'),
+        href: '/contact',
+        isExternal: false,
+      },
+      {
+        name: i18n.t('nav.filmsLongs'),
+        href: '/doculongs',
+        isExternal: false,
+      },
+      {
+        name: i18n.t('nav.filmsCourts'),
+        href: '/docucourts',
+        isExternal: false,
+      },
+      {
+        name: i18n.t('nav.installations'),
+        href: '/installations',
+        isExternal: false,
+      },
+    ],
+  },
+  {
+    header: i18n.t('footer.mentionsLegales'),
+    links: [
+      {
+        name: i18n.t('mentionsLegales.confidentialite'),
+        href: '/confidentialite',
+        isExternal: false,
+      },
+    ],
+  },
+  {
+    header: i18n.t('footer.reseauxSociaux'),
+    links: [
+      {
+        name: i18n.t('reseauxSociaux.vimeo'),
+        href: 'https://vimeo.com/lajeteefilms',
+        isExternal: true,
+      },
+    ],
+  },
+];
+---
+
+<footer class="bg-primary-500/10">
+  <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+      <div class="space-y-8">
+        <LocalizedLink href="/" lang={lang}>
+          <LogoJetee class="h-7 w-auto" />
+        </LocalizedLink>
+        <p class="text-sm leading-6 text-primary-200">
+          {i18n.t('footer.description')}
+        </p>
+        <p class="text-xs leading-5 text-primary-200">
+          {i18n.t('footer.copyright')} &copy; {new Date().getFullYear()} Regeneralia
+        </p>
+      </div>
+      <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+        <div class="md:grid md:grid-cols-2 md:gap-8">
+          {
+            bottomLinks.map((group) => (
+              <div>
+                <h3 class="text-sm font-semibold leading-6 text-primary-200">{group.header}</h3>
+                <ul role="list" class="mt-6 space-y-4">
+                  {group.links.map((link) => (
+                    <li>
+                      {link.isExternal ? (
+                        <a
+                          href={link.href}
+                          class="text-sm leading-6 text-primary-200 hover:text-primary-50"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {link.name}
+                        </a>
+                      ) : (
+                        <LocalizedLink
+                          href={link.href}
+                          lang={lang}
+                          class="text-sm leading-6 text-primary-200 hover:text-primary-50"
+                        >
+                          {link.name}
+                        </LocalizedLink>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <div class="mt-16 border-t border-primary-900/10 pt-8 sm:mt-20 lg:mt-24">
+      <p class="text-xs leading-5 text-primary-200">
+        {i18n.t('footer.rights')} &copy; {new Date().getFullYear()} La Jetée Films.
+      </p>
+    </div>
+  </div>
+</footer>

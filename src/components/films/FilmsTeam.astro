@@ -1,3 +1,7 @@
+---
+import { useI18n } from '../../utils/i18n';
+const { lang } = Astro.props; // El idioma se pasa como prop desde la página padre
+const i18n = useI18n(lang);
 import { Image } from 'astro:assets';
 import lidiaImage from '../../assets/lidia-martin-merino-directrice-documentaire.webp';
 import africaImage from '../../assets/africa-bayon-scenographe.webp';
@@ -36,16 +40,13 @@ const teamMembers = [
     }
   }
 ];
+---
 
 <section class="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
-        L'Équipe de La Jetée Films
-      </h2>
-      <p class="mt-4 text-lg text-gray-600">
-        Les architectes des narratives documentaires qui défient le silence
-      </p>
+      <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">L'Équipe de La Jetée Films</h2>
+      <p class="mt-4 text-lg text-gray-600">Les architectes des narratives documentaires qui défient le silence</p>
     </div>
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-3">

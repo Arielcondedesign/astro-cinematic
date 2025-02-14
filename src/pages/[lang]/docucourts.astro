@@ -1,12 +1,34 @@
 ---
 import Heading from '../components/courts/Heading.astro';
 import Projects from '../components/courts/Projects.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
+import { useI18n } from '../../utils/i18n';
+import { languages, defaultLanguage } from '../../i18n/config';
+
+export function getStaticPaths() {
+  return languages.map(lang => ({
+    params: { lang },
+    props: { lang }
+  }));
+}
+
+const { lang } = Astro.props;
+if (!languages.includes(lang)) {
+  return Astro.redirect(`/${defaultLanguage}`);
+}
+
+const i18n = useI18n(lang);
+const translations = {
+  "page.docucourts": {
+    "title": "La Jetée Films | Documentaires et Courts-métrages",
+    "description": "Explorez notre collection de films documentaires qui capturent les voix silenciées. Chaque film est un témoignage, chaque image un acte de résilience."
+  }
+};
 ---
 
 <Layout
-description="Explorez notre collection de films documentaires qui capturent les voix silenciées. Chaque film est un témoignage, chaque image un acte de résilience."
-title="La Jetée Films | Documentaires et Courts-métrages"
+description={i18n.t('page.docucourts.description')}
+title={i18n.t('page.docucourts.title')}
 >
 <Heading />
 <Projects />

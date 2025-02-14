@@ -1,0 +1,17 @@
+---
+import { getLocalizedPath } from '../../i18n/config';
+import type { Language } from '../../i18n/config';
+
+interface Props {
+  href: string;
+  lang?: Language;
+  class?: string;
+}
+
+const { href, lang = 'fr', class: className, ...props } = Astro.props;
+const localizedHref = getLocalizedPath(href, lang);
+---
+
+<a href={localizedHref} class={className} {...props}>
+  <slot />
+</a>

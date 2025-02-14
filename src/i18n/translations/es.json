@@ -1,19 +1,100 @@
 {
   "site": {
-    "title": "La Jetée Films | Documentando los Márgenes de la Realidad",
-    "description": "La Jetée Films: Creamos largometrajes, cortometrajes y exposiciones que dan voz a historias olvidadas. Cada obra es un acto de resistencia contra el olvido. ¡Ven a descubrir nuestras narrativas comprometidas!"
+    "title": "La Jetée Films | Documentando los Márgenes de lo Real",
+    "description": "La Jetée Films: Creamos largometrajes, cortometrajes y exposiciones que dan voz a las historias olvidadas. Cada obra, un acto de resistencia contra el olvido."
   },
   "nav": {
     "home": "Inicio",
-    "about": "Sobre Nosotros",
     "films": "Películas",
+    "apropos": "Sobre Nosotros",
+    "contact": "Contacto",
     "longMetrages": "Largometrajes",
     "courtMetrages": "Cortometrajes",
-    "installations": "Instalaciones",
-    "contact": "Contacto"
+    "installations": "Instalaciones"
   },
   "hero": {
-    "title": "Documentando los Márgenes de la Realidad",
+    "title": "Documentando los Márgenes de lo Real",
     "subtitle": "Documentales e Instalaciones"
+  },
+  "about": {
+    "title": "Nuestra Historia",
+    "subtitle": "La Jetée Films nació de una pasión por el cine documental y un compromiso profundo con las historias que merecen ser contadas.",
+    "button": "Saber más",
+    "description": "Desde nuestra creación, nos comprometemos a dar voz a las historias olvidadas.",
+    "cta": "Saber más"
+  },
+  "films": {
+    "title": "Nuestra Colección",
+    "description": "Descubre nuestros documentales que dan voz a las historias olvidadas",
+    "viewAll": "Ver todas las películas",
+    "entries": [
+      {
+        "title": "Les Voix du Silence",
+        "year": "2024",
+        "description": "Un regard intime sur les communautés marginalisées",
+        "image": "/films/voix-silence.jpg"
+      },
+      {
+        "title": "Au-delà des Murs",
+        "year": "2023",
+        "description": "L'art urbain comme forme de résistance",
+        "image": "/films/murs.jpg"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "description": "Nous sommes à votre écoute",
+    "form": {
+      "name": "Nom",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Envoyer",
+      "success": "Message envoyé avec succès",
+      "error": "Une erreur est survenue"
+    }
+  },
+  "footer": {
+    "rights": "Tous droits réservés",
+    "privacy": "Politique de confidentialité",
+    "terms": "Mentions légales"
+  },
+  "cookies": {
+    "message": "Nous utilisons des cookies pour améliorer votre expérience",
+    "accept": "Accepter",
+    "decline": "Refuser",
+    "learn": "En savoir plus"
+  },
+  "longs": {
+    "heading": {
+      "title": "Largometrajes",
+      "subtitle": "Descubre nuestros documentales de largo formato"
+    },
+    "projects": {
+      "preproduction": {
+        "title": "Películas en pre-producción",
+        "description": "Cerdos, la guerra no ha terminado."
+      },
+      "memorias": {
+        "title": "Memorias de la Esperanza",
+        "description": "Museo de Ciencias Naturales de la Ciudad de La Plata, Argentina. A través de placas de vidrio de 1905, viajamos hasta su origen. Las ciudades originarias de Jujuy cuentan su búsqueda de memoria."
+      },
+      "avefria": {
+        "title": "El retorno del avefría",
+        "description": "El teatro humaniza. Viaje de un ave: un avefría, que llega a una ciudad y encuentra sus calles llenas de actividad artística. Una ciudad de piedra, la ternura del teatro."
+      },
+      "godot": {
+        "title": "Esperando a Godot",
+        "description": "Película sobre Fernando Urdiales, un gran dramaturgo castellano y leonés fallecido en Valladolid en 2010."
+      },
+      "agapito": {
+        "title": "Trailer Agapito Marazuela, La estatua rota",
+        "description": "Retrato de un músico universal: Agapito Marazuela. Gran hombre que tuvo una vida que muestra las circunstancias históricas del siglo XX en España: alegría por la cultura, dictaduras, represión, miseria, miedo, olvido."
+      }
+    }
+  },
+  "installations": {
+    "title": "Instalaciones",
+    "subtitle": "Descubre nuestras instalaciones artísticas y exposiciones"
   }
 }

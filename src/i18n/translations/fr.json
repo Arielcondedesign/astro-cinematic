@@ -1,19 +1,128 @@
 {
   "site": {
     "title": "La Jetée Films | Documenter les Marges du Réel",
-    "description": "La Jetée Films : On crée des longs-métrages, courts-métrages et expos qui donnent une voix aux histoires oubliées. Chaque œuvre, un acte de résistance contre l'oubli. Venez découvrir nos récits engagés !"
+    "description": "La Jetée Films : On crée des longs-métrages, courts-métrages et expos qui donnent une voix aux histoires oubliées. Chaque œuvre, un acte de résistance contre l'oubli."
+  },
+  "page.films": {
+    "title": "La Jetée Films | Films",
+    "description": "La Jetée Films : On crée des longs-métrages, courts-métrages et expos qui donnent une voix aux histoires oubliées. Chaque œuvre, un acte de résistance contre l'oubli."
+  },
+  "page.installations": {
+    "title": "La Jetée Films | Installations",
+    "description": "La Jetée Films : On crée des longs-métrages, courts-métrages et expos qui donnent une voix aux histoires oubliées. Chaque œuvre, un acte de résistance contre l'oubli."
+  },
+  "page.apropos": {
+    "title": "La Jetée Films | A propos",
+    "description": "La Jetée Films : On crée des longs-métrages, courts-métrages et expos qui donnent une voix aux histoires oubliées. Chaque œuvre, un acte de résistance contre l'oubli."
+  },
+  "page.contact": {
+    "title": "La Jetée Films | Contact",
+    "description": "La Jetée Films : On crée des longs-métrages, courts-métrages et expos qui donnent une voix aux histoires oubliées. Chaque œuvre, un acte de résistance contre l'oubli."
+  },
+  "page.docucourts": {
+    "title": "La Jetée Films | Documentaires et Courts-métrages",
+    "description": "La Jetée Films : On crée des longs-métrages, courts-métrages et expos qui donnent une voix aux histoires oubliées. Chaque œuvre, un acte de résistance contre l'oubli."
+  },
+  "page.404": {
+    "title": "La Jetée Films | 404",
+    "description": "La Jetée Films : On crée des longs-métrages, courts-métrages et expos qui donnent une voix aux histoires oubliées. Chaque œuvre, un acte de résistance contre l'oubli."
+  },
+  "page.confidentialite": {
+    "title": "La Jetée Films | Confidentialité",
+    "description": "La Jetée Films : On crée des longs-métrages, courts-métrages et expos qui donnent une voix aux histoires oubliées. Chaque œuvre, un acte de résistance contre l'oubli."
   },
   "nav": {
     "home": "Accueil",
-    "about": "À propos",
     "films": "Films",
+    "apropos": "À propos",
+    "contact": "Contact",
     "longMetrages": "Longs Métrages",
     "courtMetrages": "Courts Métrages",
-    "installations": "Installations",
-    "contact": "Contact"
+    "installations": "Installations"
   },
   "hero": {
     "title": "Documenter les Marges du Réel",
     "subtitle": "Films Documentaires & Installations"
+  },
+  "longs": {
+    "heading": {
+      "title": "Longs Métrages",
+      "subtitle": "Découvrez nos documentaires de long format"
+    },
+    "projects": {
+      "preproduction": {
+        "title": "Films en pre-production",
+        "description": "Cerdos, la guerre n'est pas finie."
+      },
+      "memorias": {
+        "title": "Memorias de la Esperanza",
+        "description": "Musée des sciences naturelles de Ciudad de la Plata, Argentine. À travers des plaques de verre de 1905, nous voyageons jusqu'à son origine. Les villes d'origine de Jujui racontent leur recherche de mémoire."
+      },
+      "avefria": {
+        "title": "El retorno del avefría",
+        "description": "Le théâtre humanise. Voyage d'un oiseau: un vanneau, qui atteint une ville et trouve ses rues pleines d'activité artistique. Une ville de pierre, la tendresse du théâtre."
+      },
+      "godot": {
+        "title": "Esperando a Godot",
+        "description": "Film sur Fernando Urdiales, un grand dramaturge castillan et leonés décédé à Valladolid en 2010."
+      },
+      "agapito": {
+        "title": "Trailer Agapito Marazuela, La statue brisée",
+        "description": "Portrait d'un musicien universel: Agapito Marazuela. Grand homme qui a eu une vie qui montre les circonstances historiques du 20e siècle en Espagne: joie pour la culture, dictatures, répression, misère, peur, oubli."
+      }
+    }
+  },
+  "installations": {
+    "title": "Installations",
+    "subtitle": "Découvrez nos installations artistiques et expositions"
+  },
+  "about": {
+    "title": "Notre Histoire",
+    "subtitle": "La Jetée Films est née d'une passion pour le cinéma documentaire et d'un engagement profond envers les histoires qui méritent d'être racontées.",
+    "button": "En savoir plus",
+    "description": "Depuis notre création, nous nous engageons à donner une voix aux histoires oubliées.",
+    "cta": "En savoir plus"
+  },
+  "films": {
+    "title": "Notre Collection",
+    "description": "Découvrez nos documentaires qui donnent une voix aux histoires oubliées",
+    "viewAll": "Voir tous les films",
+    "entries": [
+      {
+        "title": "Les Voix du Silence",
+        "year": "2024",
+        "description": "Un regard intime sur les communautés marginalisées",
+        "image": "/films/voix-silence.jpg"
+      },
+      {
+        "title": "Au-delà des Murs",
+        "year": "2023",
+        "description": "L'art urbain comme forme de résistance",
+        "image": "/films/murs.jpg"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "description": "Nous sommes à votre écoute",
+    "form": {
+      "name": "Nom",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Envoyer",
+      "success": "Message envoyé avec succès",
+      "error": "Une erreur est survenue"
+    }
+  },
+  "footer": {
+    "rights": "Tous droits réservés",
+    "privacy": "Politique de confidentialité",
+    "terms": "Mentions légales"
+  },
+  "cookies": {
+    "message": "Nous utilisons des cookies pour améliorer votre expérience",
+    "accept": "Accepter",
+    "decline": "Refuser",
+    "learn": "En savoir plus"
   }
 }

@@ -8,7 +8,6 @@ import Layout from '../../layouts/Layout.astro';
 import { useI18n } from '../../utils/i18n';
 import { languages, defaultLanguage } from '../../i18n/config';
 
-// Generar rutas estáticas para cada idioma
 export function getStaticPaths() {
   return languages.map(lang => ({
     params: { lang },
@@ -16,17 +15,23 @@ export function getStaticPaths() {
   }));
 }
 
-const { lang } = Astro.params;
+const { lang } = Astro.props;
 if (!languages.includes(lang)) {
   return Astro.redirect(`/${defaultLanguage}`);
 }
 
-const { t } = useI18n(lang);
+const i18n = useI18n(lang);
+const translations = {
+  "page.home": {
+    "title": "La Jetée Films | Accueil",
+    "description": "Bienvenue sur la page d'accueil de La Jetée Films, un studio de production cinématographique specialisé dans la production de films documentaires et de courts-métages. Nous sommes fiers de vous offrir une gamme de services de haute qualité, alliant expertise, innovation et respect pour chaque projet."
+  }
+};
 ---
 
 <Layout
-  description={t('site.description')}
-  title={t('site.title')}
+description={i18n.t('page.home.description')}
+title={i18n.t('page.home.title')}
 >
   <Hero />
   <About />

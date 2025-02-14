@@ -1,4 +1,8 @@
 ---
+import { useI18n } from '../../utils/i18n';
+const { lang } = Astro.props; // El idioma se pasa como prop desde la página padre
+const i18n = useI18n(lang);
+
 const teamMembers = [
   {
     image: "../../assets/lidia-martin-merino-directrice-documentaire.webp",

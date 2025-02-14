@@ -1,8 +1,8 @@
 ---
-import HeroImage from '../images/HeroImage.astro';
 import { useI18n } from '../../utils/i18n';
-const { lang = 'fr' } = Astro.params;
-const { t } = useI18n(lang);
+const { lang } = Astro.props; // El idioma se pasa como prop desde la página padre
+const i18n = useI18n(lang);
+import HeroImage from '../images/HeroImage.astro';
 ---
 
 <section class="py-16 sm:py-20">
@@ -11,10 +11,10 @@ const { t } = useI18n(lang);
       <div class="flex flex-col items-start gap-8 sm:gap-10">
         <div class="flex max-w-xl flex-col items-start gap-4 sm:gap-6">
           <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">
-            {t('hero.title')}
+            {i18n.t('hero.title')}
           </h1>
-          <p class="text-lg text-primary-950/70 dark:text-primary-200/70 sm:text-xl">
-            {t('hero.subtitle')}
+          <p class="text-lg text-primary-200/70 sm:text-xl">
+            {i18n.t('hero.subtitle')}
           </p>
         </div>
       </div>

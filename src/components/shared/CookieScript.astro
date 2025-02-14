@@ -1,0 +1,27 @@
+---
+const isDev = import.meta.env.DEV;
+const { lang = 'fr' } = Astro.params;
+
+// Mapeo de idiomas para Cookie-Script
+const languageMap = {
+  fr: 'fr',
+  en: 'en',
+  es: 'es'
+};
+---
+
+{!isDev && (
+  <script 
+    type="text/javascript" 
+    charset="UTF-8" 
+    src="//cdn.cookie-script.com/s/9cebb4d14e57e6088e6cc9ca2adc3587.js"
+    defer
+    data-cfasync="false"
+  />
+)}
+
+{isDev && (
+  <script is:inline>
+    console.log('Cookie-Script disabled in development mode');
+  </script>
+)}

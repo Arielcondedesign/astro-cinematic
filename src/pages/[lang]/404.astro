@@ -1,10 +1,33 @@
 ---
-import Layout from '../layouts/Layout.astro';
----
+import Layout from '../../layouts/Layout.astro';
+import { useI18n } from '../../utils/i18n';
+import { languages, defaultLanguage } from '../../i18n/config';
 
+
+export function getStaticPaths() {
+  return languages.map(lang => ({
+    params: { lang },
+    props: { lang }
+  }));
+}
+
+const { lang } = Astro.props;
+if (!languages.includes(lang)) {
+  return Astro.redirect(`/${defaultLanguage}`);
+}
+
+const i18n = useI18n(lang);
+const translations = {
+  "page.404": {
+    "title": "La Jetée Films | 404",
+    "description": "La Jetée Films : On crée des longs-métrages, courts-métrages et expos qui donnent une voix aux histoires oubliées. Chaque œuvre, un acte de résistance contre l'oubli."
+  }
+};
+
+---
 <Layout
-  description="Page not found. Please check the URL in the address bar and try again."
-  title="Not found · Stone"
+  description={i18n.t('404.description')}
+  title={i18n.t('404.title')}
 >
   <section class="py-16 sm:py-20">
     <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -12,17 +35,16 @@ import Layout from '../layouts/Layout.astro';
         <div class="flex flex-col gap-4 sm:gap-6">
           <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">
             <div>404</div>
-            <div>Page not found</div>
+            <div>Où est la page?</div>
           </h1>
-          <p class="text-primary-950/70 dark:text-primary-200/70 text-lg sm:text-xl">
-            Please check the URL in the address bar and try again.
-          </p>
+          <p class="text-primary-200/70 text-lg sm:text-xl">
+            Il semble que la page que vous recherchez ait été perdue pendant le tournage. Ne vous inquiétez pas, il y a toujours quelque chose de nouveau à découvrir chez <strong>La Jetée Films</strong>          </p>
         </div>
         <a
           href="/"
-          class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+          class="bg-primary-400 hover:bg-primary-500 focus-visible:outline-primary-400 text-primary-950 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
         >
-          Go back home
+        Retour en haut
         </a>
       </div>
     </div>

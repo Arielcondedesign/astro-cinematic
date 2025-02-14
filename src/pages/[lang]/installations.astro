@@ -2,15 +2,37 @@
 import Heading from '../components/installations/Heading.astro';
 import Projects from '../components/installations/Projects.astro';
 import Gallerie from '../components/installations/Gallerie.astro';
-import Layout from '../layouts/Layout.astro';
 import InstallationsTeam from '../components/installations/InstallationsTeam.astro';
+import Layout from '../../layouts/Layout.astro';
+import { useI18n } from '../../utils/i18n';
+import { languages, defaultLanguage } from '../../i18n/config';
+
+export function getStaticPaths() {
+  return languages.map(lang => ({
+    params: { lang },
+    props: { lang }
+  }));
+}
+
+const { lang } = Astro.props;
+if (!languages.includes(lang)) {
+  return Astro.redirect(`/${defaultLanguage}`);
+}
+
+const i18n = useI18n(lang);
+const translations = {
+  "page.installations": {
+    "title": "La Jetée Films | Installations",
+    "description": "Explorez notre collection de films documentaires qui capturent les voix silenciées. Chaque film est un témoignage, chaque image un acte de résilience."
+  }
+};
 ---
 
-
 <Layout
-  description="Nos installations artistiques transforment l'espace en un dialogue critique. Découvrez comment nous documentons les histoires oubliées à travers l'art visuel."
-  title="La Jetée Films | Installations Artistiques"
+description={i18n.t('page.installations.description')}
+title={i18n.t('page.installations.title')}
 >
+  <Heading />
   <Heading />
   <Projects />
   <Gallerie />

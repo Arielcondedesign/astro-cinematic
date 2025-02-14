@@ -1,19 +1,100 @@
 {
   "site": {
     "title": "La Jetée Films | Documenting the Margins of Reality",
-    "description": "La Jetée Films: We create feature films, short films and exhibitions that give voice to forgotten stories. Each work is an act of resistance against oblivion. Come discover our engaged narratives!"
+    "description": "La Jetée Films: We create feature films, short films and exhibitions that give voice to forgotten stories. Each work, an act of resistance against oblivion."
   },
   "nav": {
     "home": "Home",
-    "about": "About",
     "films": "Films",
+    "apropos": "About",
+    "contact": "Contact",
     "longMetrages": "Feature Films",
     "courtMetrages": "Short Films",
-    "installations": "Installations",
-    "contact": "Contact"
+    "installations": "Installations"
   },
   "hero": {
     "title": "Documenting the Margins of Reality",
     "subtitle": "Documentary Films & Installations"
+  },
+  "longs": {
+    "heading": {
+      "title": "Feature Films",
+      "subtitle": "Discover our feature-length documentaries"
+    },
+    "projects": {
+      "preproduction": {
+        "title": "Films in pre-production",
+        "description": "Cerdos, the war is not over."
+      },
+      "memorias": {
+        "title": "Memories of Hope",
+        "description": "Natural Sciences Museum of La Plata City, Argentina. Through glass plates from 1905, we travel to its origin. The original cities of Jujuy tell their search for memory."
+      },
+      "avefria": {
+        "title": "The Return of the Lapwing",
+        "description": "Theater humanizes. Journey of a bird: a lapwing, reaching a city and finding its streets full of artistic activity. A stone city, the tenderness of theater."
+      },
+      "godot": {
+        "title": "Waiting for Godot",
+        "description": "Film about Fernando Urdiales, a great Castilian and Leonese playwright who died in Valladolid in 2010."
+      },
+      "agapito": {
+        "title": "Trailer Agapito Marazuela, The Broken Statue",
+        "description": "Portrait of a universal musician: Agapito Marazuela. Great man who had a life that shows the historical circumstances of the 20th century in Spain: joy for culture, dictatorships, repression, misery, fear, oblivion."
+      }
+    }
+  },
+  "installations": {
+    "title": "Installations",
+    "subtitle": "Discover our artistic installations and exhibitions"
+  },
+  "about": {
+    "title": "Our Story",
+    "subtitle": "La Jetée Films was born from a passion for documentary filmmaking and a deep commitment to stories that deserve to be told.",
+    "button": "Learn more",
+    "description": "Since our creation, we are committed to giving voice to forgotten stories.",
+    "cta": "Learn more"
+  },
+  "films": {
+    "title": "Our Collection",
+    "description": "Discover our documentaries that give voice to forgotten stories",
+    "viewAll": "View all films",
+    "entries": [
+      {
+        "title": "The Voices of Silence",
+        "year": "2024",
+        "description": "An intimate look at marginalized communities",
+        "image": "/films/voix-silence.jpg"
+      },
+      {
+        "title": "Beyond the Walls",
+        "year": "2023",
+        "description": "Urban art as a form of resistance",
+        "image": "/films/murs.jpg"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "We're here to listen",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send",
+      "success": "Message sent successfully",
+      "error": "An error occurred"
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Legal Notice"
+  },
+  "cookies": {
+    "message": "We use cookies to improve your experience",
+    "accept": "Accept",
+    "decline": "Decline",
+    "learn": "Learn more"
   }
 }

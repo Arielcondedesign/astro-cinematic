@@ -1,8 +1,12 @@
+---
+import { useI18n } from '../../utils/i18n';
+const { lang } = Astro.props; // El idioma se pasa como prop desde la página padre
+const i18n = useI18n(lang);
 import { Image } from 'astro:assets';
-// ... altres imports necessaris
+---
 
 <section class="bg-gray-50 py-16">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-12">Notre Équipe</h2>
+    <h2 class="text-3xl font-bold text-center mb-12">{t('crew.title')}</h2>
   </div>
 </section> 

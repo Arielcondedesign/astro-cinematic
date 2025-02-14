@@ -1,13 +1,87 @@
 ---
-import ContactForm from '../components/contact/ContactForm.astro';
-import ContactInfo from '../components/contact/ContactInfo.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
+import { useI18n } from '../../utils/i18n';
+import { languages, defaultLanguage } from '../../i18n/config';
+
+export function getStaticPaths() {
+  return languages.map(lang => ({
+    params: { lang },
+    props: { lang }
+  }));
+}
+
+const { lang } = Astro.props;
+if (!languages.includes(lang)) {
+  return Astro.redirect(`/${defaultLanguage}`);
+}
+
+const i18n = useI18n(lang);
+const translations = {
+  "page.contact": {
+    "title": "La Jetée Films | Contact",
+    "description": "La Jetée Films : Pour toute question ou préoccupation concernant notre politique de confidentialité, vous pouvez nous contacter :"
+  }
+};
 ---
 
 <Layout
-  description="Rejoignez notre mission de résistance narrative. Contactez La Jetée Films pour collaborer, proposer un projet ou simplement échanger sur nos documentaires."
-  title="La Jetée Films | Collaborez avec Nous"
+  description={i18n.t('contact.description')}
+  title={i18n.t('contact.title')}
 >
-  <ContactInfo />
-  <ContactForm />
+  <div class="py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl space-y-16">
+        <div class="mx-auto max-w-xl lg:mx-0">
+          <h2 class="text-3xl font-bold tracking-tight text-primary-50">
+            {i18n.t('contact.title')}
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-primary-200">
+            {i18n.t('contact.description')}
+          </p>
+        </div>
+        <form class="mx-auto max-w-xl">
+          <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+            <div>
+              <label class="block text-sm font-semibold leading-6 text-primary-50">
+                {i18n.t('contact.form.name')}
+              </label>
+              <input
+                type="text"
+                name="name"
+                class="block w-full rounded-md border-0 px-3.5 py-2 text-primary-950 shadow-sm ring-1 ring-inset ring-primary-300 placeholder:text-primary-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold leading-6 text-primary-50">
+                {i18n.t('contact.form.email')}
+              </label>
+              <input
+                type="email"
+                name="email"
+                class="block w-full rounded-md border-0 px-3.5 py-2 text-primary-950 shadow-sm ring-1 ring-inset ring-primary-300 placeholder:text-primary-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-sm font-semibold leading-6 text-primary-50">
+                {i18n.t('contact.form.message')}
+              </label>
+              <textarea
+                name="message"
+                rows="4"
+                class="block w-full rounded-md border-0 px-3.5 py-2 text-primary-950 shadow-sm ring-1 ring-inset ring-primary-300 placeholder:text-primary-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+              ></textarea>
+            </div>
+          </div>
+          <div class="mt-8">
+            <button
+              type="submit"
+              class="block w-full rounded-md bg-primary-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+            >
+              {i18n.t('contact.form.submit')}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </Layout>

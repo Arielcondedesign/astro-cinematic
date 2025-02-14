@@ -1,40 +1,43 @@
 ---
+import { useI18n } from '../../utils/i18n';
+const { lang } = Astro.props; // El idioma se pasa como prop desde la página padre
+const i18n = useI18n(lang);
 const features = [
   {
     id: 'expertise-1',
-    name: 'Digital Experience Platforms',
+    name: i18n.t('expertise.digital_experience_platforms'),
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      i18n.t('expertise.digital_experience_platforms_description'),
   },
   {
     id: 'expertise-2',
-    name: 'Web & Mobile Development',
+    name: i18n.t('expertise.web_mobile_development'),
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      i18n.t('expertise.web_mobile_development_description'),
   },
   {
     id: 'expertise-3',
-    name: 'Serverless Computing Platforms',
+    name: i18n.t('expertise.serverless_computing_platforms'),
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      i18n.t('expertise.serverless_computing_platforms_description'),
   },
   {
     id: 'expertise-4',
-    name: 'Build & Test Automation Tools',
+    name: i18n.t('expertise.build_test_automation_tools'),
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      i18n.t('expertise.build_test_automation_tools_description'),
   },
   {
     id: 'expertise-5',
-    name: 'Artificial Intelligence',
+    name: i18n.t('expertise.artificial_intelligence'),
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      i18n.t('expertise.artificial_intelligence_description'),
   },
   {
     id: 'expertise-6',
-    name: 'Full project support',
+    name: i18n.t('expertise.full_project_support'),
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      i18n.t('expertise.full_project_support_description'),
   },
 ];
 ---
@@ -42,7 +45,7 @@ const features = [
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="grid gap-12 lg:grid-cols-3 lg:gap-8">
-      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Expertise</h2>
+      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">{i18n.t('expertise.title')}</h2>
       <div class="lg:col-span-2">
         <dl
           class="-mt-3"
@@ -53,12 +56,12 @@ const features = [
               <div
                 class="rounded-3xl px-4 transition"
                 x-data={`{ id: ${index}, get isOpen() { return this.id === this.selected }, get isNextOpen() { return (this.id + 1) === this.selected } }`}
-                x-bind:class="{ 'bg-primary-500/10 dark:bg-primary-400/10': isOpen }"
+                x-bind:class="{ 'bg-primary-400/10': isOpen }"
               >
                 <dt
                   class="border-b text-lg transition"
                   x-cloak
-                  x-bind:class="{ 'border-transparent': isOpen || isNextOpen, 'border-primary-900/10 dark:border-primary-300/10': !(isOpen || isNextOpen) }"
+                  x-bind:class="{ 'border-transparent': isOpen || isNextOpen, 'border-primary-300/10': !(isOpen || isNextOpen) }"
                 >
                   <button
                     type="button"
@@ -68,11 +71,11 @@ const features = [
                     aria-expanded="false"
                     x-bind:aria-expanded="isOpen.toString()"
                   >
-                    <div class="group-focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200 flex items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2">
+                    <div class="group-focus-visible:outline-primary-200 flex items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2">
                       <span class="font-medium">{feature.name}</span>
                       <span class="ml-6 flex h-7 items-center">
                         <svg
-                          class="text-primary-600 dark:text-primary-400 h-6 w-6 rotate-0 transform transition duration-200 ease-in-out"
+                          class="text-primary-400 h-6 w-6 rotate-0 transform transition duration-200 ease-in-out"
                           x-bind:class="{ '-rotate-180': isOpen, 'rotate-0': !isOpen }"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
@@ -86,7 +89,7 @@ const features = [
                   </button>
                 </dt>
                 <dd class="pb-6 pr-6" id={feature.id} x-show="isOpen" x-cloak x-collapse>
-                  <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
+                  <p class="text-primary-200/70 text-base">
                     {feature.description}
                   </p>
                 </dd>

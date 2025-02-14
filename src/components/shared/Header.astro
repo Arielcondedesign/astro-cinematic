@@ -1,0 +1,95 @@
+---
+import { useI18n } from '../../utils/i18n';
+import LocalizedLink from './LocalizedLink.astro';
+
+const { lang } = Astro.props;
+const i18n = useI18n(lang);
+
+const navigation = [
+  {
+    name: i18n.t('nav.home'),
+    href: '/'
+  },
+  {
+    name: i18n.t('nav.films'),
+    href: '/films'
+  },
+  {
+    name: i18n.t('nav.apropos'),
+    href: '/apropos'
+  },
+  {
+    name: i18n.t('nav.contact'),
+    href: '/contact'
+  }
+];
+
+const languages = [
+  { code: 'fr', name: 'Français' },
+  { code: 'es', name: 'Español' },
+  { code: 'en', name: 'English' }
+];
+---
+
+<header class="relative z-50" x-data="{ open: false }">
+  <nav class="mx-auto max-w-7xl px-6 lg:px-8" aria-label="Top">
+    <div class="flex w-full items-center justify-between border-b border-primary-500/10 py-6 lg:border-none">
+      <div class="flex items-center">
+        <LocalizedLink href="/" lang={lang} class="flex items-center space-x-3">
+          <span class="text-xl font-bold">La Jetée Films</span>
+        </LocalizedLink>
+      </div>
+      <div class="ml-10 hidden space-x-8 lg:block">
+        {
+          navigation.map((link) => (
+            <LocalizedLink
+              href={link.href}
+              lang={lang}
+              class="text-sm font-medium text-primary-50 hover:text-primary-200"
+            >
+              {link.name}
+            </LocalizedLink>
+          ))
+        }
+      </div>
+      <div class="flex items-center space-x-6">
+        <div class="hidden lg:block">
+          <div class="flex items-center space-x-6">
+            {
+              languages.map((l) => {
+                // Remove the current language prefix from the pathname
+                const currentPath = Astro.url.pathname;
+                const pathWithoutLang = currentPath.replace(`/${lang}`, '') || '/';
+                
+                return (
+                  <a
+                    href={`/${l.code}${pathWithoutLang === '/' ? '' : pathWithoutLang}`}
+                    class={`text-sm font-medium ${
+                      l.code === lang ? 'text-primary-200' : 'text-primary-50 hover:text-primary-200'
+                    }`}
+                    hreflang={l.code}
+                  >
+                    {l.name}
+                  </a>
+                );
+              })
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap justify-center gap-x-6 py-4 lg:hidden">
+      {
+        navigation.map((link) => (
+          <LocalizedLink
+            href={link.href}
+            lang={lang}
+            class="text-sm font-medium text-primary-50 hover:text-primary-200"
+          >
+            {link.name}
+          </LocalizedLink>
+        ))
+      }
+    </div>
+  </nav>
+</header>

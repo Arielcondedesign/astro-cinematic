@@ -1,12 +1,18 @@
+---
+import { useI18n } from '../../utils/i18n';
+const { lang } = Astro.props; // El idioma se pasa como prop desde la página padre
+const i18n = useI18n(lang);
+---
+
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <dl class="grid gap-6 lg:grid-cols-3">
       <!-- Email -->
-      <div class="bg-primary-500/10 dark:bg-primary-400/10 rounded-3xl px-6 py-8">
+      <div class="bg-primary-400/10 rounded-3xl px-6 py-8">
         <dt class="sr-only">Email</dt>
         <dd class="flex h-full flex-col justify-between gap-12">
           <svg
-            class="text-primary-600 dark:text-primary-400 h-6 w-6"
+            class=text-primary-400 h-6 w-6"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
@@ -21,11 +27,11 @@
       </div>
   
       <!-- Numéro de téléphone -->
-      <div class="bg-primary-500/10 dark:bg-primary-400/10 rounded-3xl px-6 py-8">
+      <div class="bg-primary-400/10 rounded-3xl px-6 py-8">
         <dt class="sr-only">Numéro de téléphone</dt>
         <dd class="flex h-full flex-col justify-between gap-12">
           <svg
-            class="text-primary-600 dark:text-primary-400 h-6 w-6"
+            class=text-primary-400 h-6 w-6"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
@@ -39,11 +45,11 @@
         </dd>
       </div>
       <!-- Adresse -->
-      <div class="bg-primary-500/10 dark:bg-primary-400/10 rounded-3xl px-6 py-8">
+      <div class="bg-primary-400/10 rounded-3xl px-6 py-8">
         <dt class="sr-only">Localisation</dt>
         <dd class="flex h-full flex-col justify-between gap-12">
             <svg
-                class="text-primary-600 dark:text-primary-400 h-6 w-6"
+                class="text-primary-400 h-6 w-6"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"

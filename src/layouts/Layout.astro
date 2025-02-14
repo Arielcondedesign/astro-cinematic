@@ -1,88 +1,72 @@
 ---
-import '@fontsource/inter/latin-400.css';
-import '@fontsource/inter/latin-500.css';
+import { getLangFromUrl } from '../i18n/config';
+import Header from '../components/shared/Header.astro';
+import Footer from '../components/shared/Footer.astro';
 import { ViewTransitions } from 'astro:transitions';
-import Footer from '../components/layout/Footer.astro';
-import Header from '../components/layout/Header.astro';
-import { useI18n } from '../utils/i18n';
-
-const { lang = 'fr' } = Astro.params;
-const { t } = useI18n(lang);
 
 interface Props {
   title: string;
   description: string;
 }
 
+const lang = getLangFromUrl(Astro.url);
 const { title, description } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  </head>
-  <body class="bg-primary-950 text-primary-50">
-    <Header />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-    <style is:global>
-      :root {
-        --accent: 136, 58, 234;
-        --accent-light: 224, 204, 250;
-        --accent-dark: 49, 10, 101;
-        --accent-gradient: linear-gradient(
-          45deg,
-          rgb(var(--accent)),
-          rgb(var(--accent-light)) 30%,
-          white 60%
-        );
-      }
-      [x-cloak] {
-        display: none !important;
-      }
-    </style>
     <script>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </head>
+  <body class="bg-primary-900">
+    <Header />
+    <slot />
+    <Footer />
+    <script>
+      // @ts-ignore
       import Alpine from 'alpinejs';
+      // @ts-ignore
       import collapse from '@alpinejs/collapse';
 
-      Alpine.plugin(collapse);
-
-      Alpine.store('theme', {
-        init() {
-          this.isDark = (() => {
-            if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-              return localStorage.getItem('theme') === 'dark';
-            }
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-              return true;
-            }
-            return false;
-          })();
-        },
-
-        isDark: false,
-
-        toggle() {
-          this.isDark = !this.isDark;
-          localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
-        },
-      });
+      declare global {
+        interface Window {
+          Alpine: typeof Alpine;
+        }
+      }
 
       window.Alpine = Alpine;
+      Alpine.plugin(collapse);
       Alpine.start();
+
+      document.addEventListener('alpine:init', () => {
+        Alpine.data('theme', () => ({
+          isDark: localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches),
+          toggleTheme() {
+            this.isDark = !this.isDark;
+            if (this.isDark) {
+              localStorage.theme = 'dark';
+              document.documentElement.classList.add('dark');
+            } else {
+              localStorage.theme = 'light';
+              document.documentElement.classList.remove('dark');
+            }
+          }
+        }));
+      });
     </script>
   </body>
 </html>

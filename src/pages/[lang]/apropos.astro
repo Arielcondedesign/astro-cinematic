@@ -4,11 +4,34 @@ import Mission from '../components/about/Mission.astro';
 import Team from '../components/about/Team.astro';
 import Values from '../components/about/Values.astro';
 import Layout from '../layouts/Layout.astro';
+import { useI18n } from '../../utils/i18n';
+import { languages, defaultLanguage } from '../../i18n/config';
+
+//Generarrta státicas para cada idiom// Generar rutas estáticas para cada idioma
+export function getStaticPaths() {
+  return languages.map(lang => ({
+    params: { lang },
+    props: { lang }
+  }));
+}
+
+const { lang } = Astro.props;
+if (!languages.includes(lang)) {
+  return Astro.redirect(`/${defaultLanguage}`);
+}
+
+const i18n = useI18n(lang);
+const translations = {
+  "page.apropos": {
+    "title": "La Jetée Films | A propos",
+    "description": "La Jetée Films : On crée des longs-métrages, courts-métrages et expos qui donnent une voix aux histoires oubliées. Chaque œuvre, un acte de résistance contre l'oubli."
+  }
+};
 ---
 
 <Layout
-  description="Découvrez l'histoire de La Jetée Films, une productrice documentaire engagée dans la transmission des récits marginalisés. Notre mission : transformer chaque document en acte de résistance."
-  title="La Jetée Films | Notre Histoire, Notre Mission"
+  description={i18n.t('apropos.description')}
+  title={i18n.t('apropos.title')}
 >
   <Heading />
   <Mission />
