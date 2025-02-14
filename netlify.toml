@@ -1,0 +1,30 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/fr/:splat"
+  status = 302
+  force = false
+  conditions = {Language = ["fr"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/en/:splat"
+  status = 302
+  force = false
+  conditions = {Language = ["en"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/es/:splat"
+  status = 302
+  force = false
+  conditions = {Language = ["es"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/fr/:splat"
+  status = 302
+  force = true

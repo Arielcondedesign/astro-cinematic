@@ -1,0 +1,19 @@
+{
+  "site": {
+    "title": "La Jetée Films | Documenting the Margins of Reality",
+    "description": "La Jetée Films: We create feature films, short films and exhibitions that give voice to forgotten stories. Each work is an act of resistance against oblivion. Come discover our engaged narratives!"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "films": "Films",
+    "longMetrages": "Feature Films",
+    "courtMetrages": "Short Films",
+    "installations": "Installations",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Documenting the Margins of Reality",
+    "subtitle": "Documentary Films & Installations"
+  }
+}

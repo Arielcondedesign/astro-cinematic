@@ -1,0 +1,19 @@
+{
+  "site": {
+    "title": "La Jetée Films | Documentando los Márgenes de la Realidad",
+    "description": "La Jetée Films: Creamos largometrajes, cortometrajes y exposiciones que dan voz a historias olvidadas. Cada obra es un acto de resistencia contra el olvido. ¡Ven a descubrir nuestras narrativas comprometidas!"
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre Nosotros",
+    "films": "Películas",
+    "longMetrages": "Largometrajes",
+    "courtMetrages": "Cortometrajes",
+    "installations": "Instalaciones",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Documentando los Márgenes de la Realidad",
+    "subtitle": "Documentales e Instalaciones"
+  }
+}

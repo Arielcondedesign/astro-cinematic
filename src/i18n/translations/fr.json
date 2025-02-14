@@ -1,0 +1,19 @@
+{
+  "site": {
+    "title": "La Jetée Films | Documenter les Marges du Réel",
+    "description": "La Jetée Films : On crée des longs-métrages, courts-métrages et expos qui donnent une voix aux histoires oubliées. Chaque œuvre, un acte de résistance contre l'oubli. Venez découvrir nos récits engagés !"
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "films": "Films",
+    "longMetrages": "Longs Métrages",
+    "courtMetrages": "Courts Métrages",
+    "installations": "Installations",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Documenter les Marges du Réel",
+    "subtitle": "Films Documentaires & Installations"
+  }
+}

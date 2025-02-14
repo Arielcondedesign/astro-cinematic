@@ -4,19 +4,23 @@ import '@fontsource/inter/latin-500.css';
 import { ViewTransitions } from 'astro:transitions';
 import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
+import { useI18n } from '../utils/i18n';
+
+const { lang = 'fr' } = Astro.params;
+const { t } = useI18n(lang);
 
 interface Props {
-  description: string;
   title: string;
+  description: string;
 }
 
-const { description, title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="fr" x-cloak x-data :class="{ 'dark': $store.theme.isDark }">
+<html lang={lang} class="scroll-smooth">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -28,15 +32,24 @@ const { description, title } = Astro.props;
     <ViewTransitions />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
-  <body
-    class="bg-primary-50 text-primary-950 dark:bg-primary-950 dark:text-primary-200 antialiased transition"
-  >
+  <body class="bg-primary-950 text-primary-50">
     <Header />
     <main>
       <slot />
     </main>
     <Footer />
     <style is:global>
+      :root {
+        --accent: 136, 58, 234;
+        --accent-light: 224, 204, 250;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+          45deg,
+          rgb(var(--accent)),
+          rgb(var(--accent-light)) 30%,
+          white 60%
+        );
+      }
       [x-cloak] {
         display: none !important;
       }

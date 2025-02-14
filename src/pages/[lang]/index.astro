@@ -1,0 +1,36 @@
+---
+import Hero from '../../components/home/Hero.astro';
+import About from '../../components/home/About.astro';
+import Gallery from '../../components/home/Gallery.astro';
+import Services from '../../components/home/Services.astro';
+import Cta from '../../components/home/Cta.astro';
+import Layout from '../../layouts/Layout.astro';
+import { useI18n } from '../../utils/i18n';
+import { languages, defaultLanguage } from '../../i18n/config';
+
+// Generar rutas estáticas para cada idioma
+export function getStaticPaths() {
+  return languages.map(lang => ({
+    params: { lang },
+    props: { lang }
+  }));
+}
+
+const { lang } = Astro.params;
+if (!languages.includes(lang)) {
+  return Astro.redirect(`/${defaultLanguage}`);
+}
+
+const { t } = useI18n(lang);
+---
+
+<Layout
+  description={t('site.description')}
+  title={t('site.title')}
+>
+  <Hero />
+  <About />
+  <Gallery />
+  <Services />
+  <Cta />
+</Layout>

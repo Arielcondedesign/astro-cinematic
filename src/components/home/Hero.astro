@@ -1,5 +1,8 @@
 ---
 import HeroImage from '../images/HeroImage.astro';
+import { useI18n } from '../../utils/i18n';
+const { lang = 'fr' } = Astro.params;
+const { t } = useI18n(lang);
 ---
 
 <section class="py-16 sm:py-20">
@@ -8,10 +11,10 @@ import HeroImage from '../images/HeroImage.astro';
       <div class="flex flex-col items-start gap-8 sm:gap-10">
         <div class="flex max-w-xl flex-col items-start gap-4 sm:gap-6">
           <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">
-            Documenter les Marges du Réel
+            {t('hero.title')}
           </h1>
-          <p class="text-primary-950/70 dark:text-primary-200/70 text-lg sm:text-xl">
-            Dans le désert des récits officiels, nous capturons les voix réduites au silence. Chaque document est un acte de résistance contre la persécution et l'oubli.
+          <p class="text-lg text-primary-950/70 dark:text-primary-200/70 sm:text-xl">
+            {t('hero.subtitle')}
           </p>
         </div>
       </div>

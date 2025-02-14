@@ -1,19 +1,5 @@
 ---
-import Hero from '../components/home/Hero.astro';
-import About from '../components/home/About.astro';
-import Gallery from '../components/home/Gallery.astro';
-import Services from '../components/home/Services.astro';
-import Cta from '../components/home/Cta.astro';
-import Layout from '../layouts/Layout.astro';
----
+import { defaultLanguage } from '../i18n/config';
 
-<Layout
-  description="La Jetée Films : On crée des longs-métrages, courts-métrages et expos qui donnent une voix aux histoires oubliées, con. Chaque œuvre, un acte de résistance contre l'oubli. Venez découvrir nos récits engagés !"
-  title="La Jetée Films | Documenter les Marges du Réel"
->
-  <Hero />
-  <About />
-  <Gallery />
-  <Services />
-  <Cta />
-</Layout>
+return Astro.redirect(`/${defaultLanguage}`);
+---
