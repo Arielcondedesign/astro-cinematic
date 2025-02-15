@@ -3,9 +3,9 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-  darkMode: 'class',
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
+    extend: {},
     colors: {
       current: 'currentColor',
       transparent: 'transparent',
@@ -13,7 +13,7 @@ module.exports = {
       primary: colors.neutral,
       secondary: colors.violet,
       tertiary: colors.indigo,
-      fourtier: colors.amber,
+      fourtier: colors.yellow,
     },
     fontFamily: {
       sans: ['Source code pro', 'sans-serif'],

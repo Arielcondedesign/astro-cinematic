@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import { YouTube } from '@astro-community/astro-embed-youtube';
 import posterImage from '../../assets/femmes-resistance-franquisme-memoire-poster.webp';
+import posterBarral1 from '../../assets/expo-carral-web.webp';
+import pressImage from '../../assets/Carcel-Centro-Creacion-Expo-Papillons_eladelantado.webp';
 
 const { 
   title, 
@@ -10,14 +12,25 @@ const {
   category 
 } = Astro.props;
 
+// Función para validar URLs
+function isValidUrl(url) {
+  try {
+    new URL(url);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+// Array de proyectos
 const projects = [
   {
     videoUrl: "false",
-    videoLink: "https://www.youtube.com/watch?v=i4dSzxw8Iho",
-    thumbnailUrl: posterImage,
-    posterText: "dsjofidjfdijifo, LA DÉGRADATION, LA MORTIFICATION, LE MÉPRIS",
-    highlightedParagraph: "PRISON POUR FEMMES, ESPAGNE. L'HUMILATION Comme les gens L'IGNOMINIE \"Enquêtes psychologiques sur les femmes marxistes délinquantes\" DÉGRADATION en tant que mères \"Dans les bras, les créatures sont mortes: mangées par la faim, les poux et la maladie\" LA MORTIFICATION En tant que femmes \"La punition divine s'est faite chair dans notre corps\" LA DEPRECIATION En tant que citoyens \"Nous sortons de prison et continuons à être méfiants\"",
-    bgColor: "bg-fourtier-950" // <-- Se agregó una coma aquí
+    videoLink: "false",
+    thumbnailUrl: posterBarral1,
+    posterText: "Segovia - Paris 1937/2017",
+    highlightedParagraph: "Barral Buitres y Roca",
+    bgColor: "bg-fourtier-950"
   },
   {
     videoUrl: "false",
@@ -25,19 +38,32 @@ const projects = [
     thumbnailUrl: posterImage,
     posterText: "PRISON DE FEMMES, ESPAGNE. L'HUMILATION, L'IGNOMINIE, LA DÉGRADATION, LA MORTIFICATION, LE MÉPRIS",
     highlightedParagraph: "PRISON POUR FEMMES, ESPAGNE. L'HUMILATION Comme les gens L'IGNOMINIE \"Enquêtes psychologiques sur les femmes marxistes délinquantes\" DÉGRADATION en tant que mères \"Dans les bras, les créatures sont mortes: mangées par la faim, les poux et la maladie\" LA MORTIFICATION En tant que femmes \"La punition divine s'est faite chair dans notre corps\" LA DEPRECIATION En tant que citoyens \"Nous sortons de prison et continuons à être méfiants\"",
-    bgColor: "bg-primary-950" // <-- Se agregó una coma aquí
+    bgColor: "bg-primary-950"
+  },
+  {
+    videoUrl: "false",
+    videoLink: "false",
+    thumbnailUrl: pressImage,
+    posterText: "Communiqués de presse",
+    highlightedParagraph: "\"La palabra no dicha en La Cárcel.\"",
+    link: "https://eladelantado.com/segovia/la-palabra-no-dicha-en-la-carcel/",
+    bgColor: "bg-fourtier-950"
   }
 ];
 ---
-<section class="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+
+<section>
   {projects.map((project) => (
-    <div class={`w-cover pt-16 pb-16 ${project.bgColor}`}>
-      <div class="flex flex-col items-center">
-        <div class="mb-4 h-full max-w-2xl">
+    <div 
+      class={`min-h-screen flex flex-col justify-center items-center ${project.bgColor} py-16 px-4 sm:px-6 lg:px-8`}
+    >
+      <div class="flex flex-col items-center w-full max-w-4xl">
+        {/* Imagen */}
+        <div class="mb-8 w-full max-w-2xl">
           <Image 
             src={project.thumbnailUrl} 
             alt={project.posterText}
-            class="aspect-auto shadow-lg" 
+            class="w-full aspect-auto shadow-lg rounded-lg" 
             loading="lazy"
             decoding="async"
             width={800}
@@ -46,22 +72,24 @@ const projects = [
           />
         </div>
 
-        <div class="text-center mb-4">
-          <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">
+        {/* Título y párrafo destacado */}
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-semibold text-primary-200 sm:text-3xl">
             {project.posterText}
           </h2>
-          <p class="mt-2 text-gray-700">{project.highlightedParagraph}</p>
+          <p class="mt-4 text-primary-300">{project.highlightedParagraph}</p>
         </div>
 
-        <div class="video-container mb-4 w-full max-w-2xl">
+        {/* Video */}
+        <div class="video-container mb-8 w-full max-w-2xl">
           {project.videoUrl !== "false" ? (
-            <Vimeo id={project.videoUrl} class="aspect-video" />
+            <Vimeo id={project.videoUrl} class="aspect-video w-full rounded-lg shadow-lg" />
           ) : project.videoLink !== "false" ? (
-            <div class="relative">
-              <div class="aspect-video bg-primary-950/10">
+            <div class="relative w-full">
+              <div class="aspect-video bg-primary-950/10 rounded-lg shadow-lg">
                 <YouTube 
                   id={project.videoLink.split('v=')[1].split('&')[0]} 
-                  class="absolute inset-0 w-full h-full"
+                  class="absolute inset-0 w-full h-full rounded-lg"
                   loading="lazy"
                   params="nocookie=true&rel=0&playsinline=1"
                   playlabel={`Regarder ${project.posterText}`}
@@ -90,28 +118,28 @@ const projects = [
           ) : null}
         </div>
 
-        <div class="mt-8 w-full max-w-lg text-center">
-          <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">
-            {project.title}
-          </h2>
-          <div class="mt-4 text-gray-700">
-            <p>{project.description}</p>
-          </div>
-        </div>
-
-        <div class="mt-4 text-center">
-          <h3 class="font-bold">Communiqués de presse</h3>
-          <p>
-            "La palabra no dicha en La Cárcel." 
+        {/* Enlace de prensa (si existe) */}
+        {project.link && isValidUrl(project.link) && (
+          <div class="mt-8">
             <a 
-              href="https://eladelantado.com/segovia/la-palabra-no-dicha-en-la-carcel/" 
+              href={project.link} 
               target="_blank" 
               rel="noopener noreferrer"
-              class="text-blue-600 hover:text-blue-800 underline transition-colors"
+              class="text-primary-200 hover:text-primary-300 underline"
             >
               Leer más
             </a>
-          </p>
+          </div>
+        )}
+
+        {/* Título y descripción del proyecto */}
+        <div class="mt-8 w-full max-w-2xl text-center">
+          <h2 class="text-2xl font-semibold text-primary-200 sm:text-3xl">
+            {project.title}
+          </h2>
+          <div class="mt-4 text-primary-300">
+            <p>{project.description}</p>
+          </div>
         </div>
       </div>
     </div>
