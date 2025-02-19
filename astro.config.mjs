@@ -3,11 +3,20 @@ import tailwind from '@astrojs/tailwind';
 import compress from 'astro-compress';
 
 export default defineConfig({
-  // Elimina la sección experimental si estás usando Astro v5.0
   integrations: [tailwind(), compress()],
-  
-  // Si necesitas view transitions, ahora es un comportamiento predeterminado
-  view: {
-    transitions: true
-  }
+  i18n: {
+    defaultLocale: "fr",
+    locales: ["fr", "es", "en"],
+    routing: {
+      prefixDefaultLocale: false,
+      redirectToDefaultLocale:true
+    }
+  },
+  vite: {
+    build: {
+      minify: 'terser',
+    },
+  },
+  output: 'static',
+  site: 'https://lajeteefilms.com', // Reemplaza con tu dominio real
 });

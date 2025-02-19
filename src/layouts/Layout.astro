@@ -2,19 +2,31 @@
 import '@fontsource/inter/latin-400.css';
 import '@fontsource/inter/latin-500.css';
 import { ViewTransitions } from 'astro:transitions';
-import Footer from '../components/shared/Footer.astro';
 import Header from '../components/shared/Header.astro';
+import Footer from '../components/shared/Footer.astro';
 
 interface Props {
-  description: string;
-  title: string;
+  description?: string;
+  title?: string;
 }
 
-const { description, title } = Astro.props;
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "../i18n/utils";
+import { languageList } from "../i18n/ui";
+const currentLang = Astro.currentLocale || "fr";
+
+const t = useTranslations(
+  currentLang as keyof typeof languageList
+);
+
+const { 
+  title = t("site.title"),
+  description = t("site.description")
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang={currentLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />

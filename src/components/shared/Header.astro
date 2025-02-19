@@ -1,11 +1,26 @@
 ---
 import LogoJetee from '../images/LogoJetee.astro';
+import { languageList } from "../../i18n/ui";
+import { useTranslations } from "../../i18n/utils";
 
-// Temporalmente desactivado el soporte multiidioma
-// interface Props {
-//   lang?: string;
-// }
-// const { lang = 'fr' } = Astro.props;
+const currentLang = Astro.currentLocale || "fr";
+const t = useTranslations(currentLang as keyof typeof languageList);
+
+// Obtener la ruta actual sin el prefijo de idioma
+const currentPath = Astro.url.pathname;
+const pathWithoutLang = currentPath.replace(/^\/(fr|en|es)/, '') || '/';
+
+// Configurar los idiomas con las rutas correctas
+const languages = [
+  { code: 'fr', name: 'Français', current: currentLang === 'fr' },
+  { code: 'en', name: 'English', current: currentLang === 'en' },
+  { code: 'es', name: 'Español', current: currentLang === 'es' }
+].map(lang => ({
+  ...lang,
+  href: lang.code === 'fr' ? 
+    (pathWithoutLang === '/' ? '/' : pathWithoutLang) : 
+    `/${lang.code}${pathWithoutLang === '/' ? '' : pathWithoutLang}`
+}));
 
 const links = [
   {
@@ -47,17 +62,10 @@ const links = [
   },
 ];
 
-// Temporalmente desactivado el soporte multiidioma
-// const languages = [
-//   { code: 'fr', name: 'Français' },
-//   { code: 'en', name: 'English' },
-//   { code: 'es', name: 'Español' }
-// ];
-// const currentLang = languages.find(l => l.code === lang) || languages[0];
 ---
 
 <header
-  x-data="{ open: false, dropdownOpen: false }"
+  x-data="{ open: false, dropdownOpen: false, selectedLanguage: false }"
   class="transition bg-primary-950"
 >
   <div
@@ -78,6 +86,77 @@ const links = [
 
     <!-- Actions -->
     <div class="-mr-2 flex items-center space-x-2 sm:space-x-3">
+      <!-- Language selector -->
+      <div 
+        class="relative" 
+        x-data="{ isOpen: false }" 
+        @keydown.escape="isOpen = false"
+        @click.away="isOpen = false"
+      >
+        <button
+          type="button"
+          @click="isOpen = !isOpen"
+          class="text-primary-200 hover:bg-primary-400/10 ring-primary-200 inline-flex h-14 w-14 items-center justify-center rounded-full transition focus:outline-none focus-visible:ring-2"
+          :aria-expanded="isOpen"
+          aria-controls="language-menu"
+        >
+          <span class="sr-only">Select language</span>
+          <div class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+            </svg>
+            <span class="ml-2 text-sm font-medium">{currentLang.toUpperCase()}</span>
+          </div>
+        </button>
+
+        <!-- Language menu -->
+        <div
+          id="language-menu"
+          x-show="isOpen"
+          x-transition:enter="transition ease-out duration-100"
+          x-transition:enter-start="transform opacity-0 scale-95"
+          x-transition:enter-end="transform opacity-100 scale-100"
+          x-transition:leave="transition ease-in duration-75"
+          x-transition:leave-start="transform opacity-100 scale-100"
+          x-transition:leave-end="transform opacity-0 scale-95"
+          class="absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-xl bg-primary-900 py-2 shadow-lg ring-1 ring-primary-200/10 focus:outline-none"
+          role="menu"
+          aria-orientation="vertical"
+          tabindex="-1"
+        >
+          <div class="py-1">
+            {languages.map((l) => (
+              <a
+                href={l.href}
+                class:list={[
+                  'flex w-full items-center px-4 py-2 text-sm transition-colors hover:bg-primary-800 focus:bg-primary-800 focus:outline-none',
+                  {
+                    'text-primary-200 font-medium': l.current,
+                    'text-primary-400': !l.current,
+                  },
+                ]}
+                role="menuitem"
+                @click="isOpen = false"
+              >
+                <div class="flex items-center gap-2">
+                  {l.current && (
+                    <svg
+                      class="h-4 w-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z" />
+                    </svg>
+                  )}
+                  <span>{l.name}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <!-- Toggle menu -->
       <button
         type="button"
@@ -91,8 +170,8 @@ const links = [
         <span class="sr-only">Toggle menu</span>
         <svg
           x-cloak
-          class="h-8 w-8"
-          :class="{ 'hidden': open, 'block': !(open) }"
+          class="h-8 w-8 transition-transform duration-200"
+          :class="{ 'hidden': open, 'block': !open }"
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
           viewBox="0 0 24 24"
@@ -102,86 +181,17 @@ const links = [
         </svg>
         <svg
           x-cloak
-          class="h-8 w-8"
-          :class="{ 'block': open, 'hidden': !(open) }"
+          class="h-8 w-8 transition-transform duration-200"
+          :class="{ 'block': open, 'hidden': !open }"
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
-          <path
-            d="M12.0007 10.5865L16.9504 5.63672L18.3646 7.05093L13.4149 12.0007L18.3646 16.9504L16.9504 18.3646L12.0007 13.4149L7.05093 18.3646L5.63672 16.9504L10.5865 12.0007L5.63672 7.05093L7.05093 5.63672L12.0007 10.5865Z"
-          ></path>
+          <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"></path>
         </svg>
       </button>
 
-      <!-- Language selector - Temporalmente desactivado -->
-      {/* <div class="relative" x-data="{ langOpen: false }">
-        <button
-          type="button"
-          @click="langOpen = !langOpen"
-          @click.away="langOpen = false"
-          class="text-primary-200 hover:bg-primary-800 inline-flex h-14 items-center justify-center rounded-full px-4 transition-colors"
-          aria-label="Select language"
-        >
-          <span class="flex items-center gap-2">
-            <svg
-              class="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"
-              />
-            </svg>
-            <span class="text-sm font-medium">{currentLang.code.toUpperCase()}</span>
-          </span>
-        </button>
-        <div
-          x-show="langOpen"
-          x-transition:enter="transition ease-out duration-100"
-          x-transition:enter-start="transform opacity-0 scale-95"
-          x-transition:enter-end="transform opacity-100 scale-100"
-          x-transition:leave="transition ease-in duration-75"
-          x-transition:leave-start="transform opacity-100 scale-100"
-          x-transition:leave-end="transform opacity-0 scale-95"
-          class="absolute right-0 mt-2 w-48 origin-top-right rounded-xl bg-primary-900 py-2 shadow-lg ring-1 ring-primary-200/10"
-          role="menu"
-        >
-          {languages.map((l) => (
-            <a
-              href={`/${l.code}`}
-              class:list={[
-                'block px-4 py-2 text-sm transition-colors hover:bg-primary-800',
-                {
-                  'text-primary-200 font-medium': currentLang.code === l.code,
-                  'text-primary-400': currentLang.code !== l.code,
-                },
-              ]}
-              role="menuitem"
-            >
-              <div class="flex items-center gap-2">
-                {currentLang.code === l.code && (
-                  <svg
-                    class="h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z" />
-                  </svg>
-                )}
-                <span>{l.name}</span>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div> */}
     </div>
   </div>
 
