@@ -1,5 +1,11 @@
 ---
 import LogoJetee from '../images/LogoJetee.astro';
+import { languageList } from "../../i18n/ui";
+import { useTranslations } from "../../i18n/utils";
+
+const currentLang = Astro.currentLocale || "fr";
+const t = useTranslations(currentLang as keyof typeof languageList);
+
 
 const bottomLinks = [
 {

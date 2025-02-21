@@ -1,5 +1,10 @@
 ---
 import HeroImage from '../images/HeroImage.astro';
+import { useTranslations } from "../../i18n/utils";
+import { languageList } from "../../i18n/ui";
+
+const currentLang = Astro.currentLocale || "fr";
+const t = useTranslations(currentLang as keyof typeof languageList);
 ---
 
 <section class="py-16 sm:py-20">
@@ -8,10 +13,10 @@ import HeroImage from '../images/HeroImage.astro';
       <div class="flex flex-col items-start gap-8 sm:gap-10">
         <div class="flex max-w-xl flex-col items-start gap-4 sm:gap-6">
           <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">
-            Donnez vie aux récits qui défient l'oubli
+            {t("hero.title")}
           </h1>
           <p class="text-primary-200/70 text-lg sm:text-xl">
-            La Jetée Films s'intéresse aux histoires humaines simples et créatives, aux messages cinématographiques qui n'ont pas besoin d'être expliqués.
+            {t("hero.p")}
           </p>
         </div>
       </div>

@@ -5,8 +5,7 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
 const { 
 title, 
 description, 
-year, 
-category 
+year,  
 } = Astro.props;
 
 const projects = [
@@ -26,7 +25,6 @@ const projects = [
     videoLink: "false",
     thumbnailUrl: "url-de-votre-image-1",
     year: "2009",
-    category: "Catégorie A",
     bgColor: "bg-secondary-950"
 },
 {
@@ -36,7 +34,6 @@ const projects = [
     videoLink: "https://www.youtube.com/watch?v=h8q49pSEIxs",
     thumbnailUrl: "url-de-votre-image-2",
     year: "2012",
-    category: "Catégorie B",
     bgColor: "bg-priamry-950"
 },
 {
@@ -45,7 +42,6 @@ const projects = [
     videoUrl: "https://vimeo.com/535572447",
     thumbnailUrl: "url-de-votre-image-3",
     year: "2014",
-    category: "Catégorie C",
     bgColor: "bg-secondary-950"
 },
 {
@@ -54,7 +50,6 @@ const projects = [
     videoUrl: "https://vimeo.com/508785843",
     thumbnailUrl: "url-de-votre-image-3",
     year: "2019",
-    category: "Catégorie D",
     bgColor: "bg-primary-950"
 }
 ];
@@ -86,7 +81,6 @@ const projects = [
                   <h3 class="font-bold">Détails du projet</h3>
                   <ul class="list-disc pl-5">
                     <li>Año: {project.year}</li>
-                    <li>Categoría: {project.category}</li>
                   </ul>
                 </div>
               </div>

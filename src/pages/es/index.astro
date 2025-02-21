@@ -5,12 +5,13 @@ import Gallery from '../../components/home/Gallery.astro';
 import Services from '../../components/home/Services.astro';
 import Cta from '../../components/home/Cta.astro';
 import Layout from '../../layouts/Layout.astro';
+import { useTranslations } from "../../i18n/utils";
+import { languageList } from "../../i18n/ui";
+const currentLang = Astro.currentLocale || "es";
+const t = useTranslations(currentLang as keyof typeof languageList);
 ---
 
-<Layout
-  description="La Jetée Films : On crée des longs-métrages, courts-métrages et expos qui donnent une voix aux histoires oubliées, con. Chaque œuvre, un acte de résistance contre l'oubli. Venez découvrir nos récits engagés !"
-  title="La Jetée Films | Documenter les Marges du Réel"
->
+<Layout title={t("home.title.tag")} description={t("home.meta.description")}>
   <Hero />
   <About />
   <h1 />

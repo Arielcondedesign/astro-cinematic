@@ -5,12 +5,6 @@ import posterImage from '../../assets/femmes-resistance-franquisme-memoire-poste
 import posterBarral1 from '../../assets/expo-carral-web.webp';
 import pressImage from '../../assets/Carcel-Centro-Creacion-Expo-Papillons_eladelantado.webp';
 
-const { 
-  title, 
-  description, 
-  year, 
-  category 
-} = Astro.props;
 
 // Función para validar URLs
 function isValidUrl(url) {
@@ -36,22 +30,23 @@ const projects = [
     videoUrl: "false",
     videoLink: "https://www.youtube.com/watch?v=i4dSzxw8Iho",
     thumbnailUrl: posterImage,
-    posterText: "PRISON DE FEMMES, ESPAGNE. L'HUMILATION, L'IGNOMINIE, LA DÉGRADATION, LA MORTIFICATION, LE MÉPRIS",
-    highlightedParagraph: "PRISON POUR FEMMES, ESPAGNE. L'HUMILATION Comme les gens L'IGNOMINIE \"Enquêtes psychologiques sur les femmes marxistes délinquantes\" DÉGRADATION en tant que mères \"Dans les bras, les créatures sont mortes: mangées par la faim, les poux et la maladie\" LA MORTIFICATION En tant que femmes \"La punition divine s'est faite chair dans notre corps\" LA DEPRECIATION En tant que citoyens \"Nous sortons de prison et continuons à être méfiants\"",
+    posterText: "Installation de femmes républicaines dans les prisons de Franco",
+    highlightedParagraph: "PRISON POUR FEMMES, ESPAGNE L'HUMILATION \n Comme les gens \n \ L'IGNOMINIE  \n \Enquêtes psychologiques sur les femmes marxistes délinquantes \n DÉGRADATION \n en tant que mères : Dans les bras, les créatures sont mortes: mangées par la faim, les poux et la maladie \n LA MORTIFICATION \n En tant que femmes : La punition divine s'est faite chair dans notre corps\n LA DEPRECIATION \n En tant que citoyens : Nous sortons de prison et continuons à être méfiants",
     bgColor: "bg-primary-950"
   },
   {
-    videoUrl: "false",
-    videoLink: "false",
-    thumbnailUrl: pressImage,
-    posterText: "Communiqués de presse \"La palabra no dicha en La Cárcel.\"",
-    highlightedParagraph: "L'installation Papillons, présentée à La Cárcel_Centro de Creación de Segovia, explore la répression subie par les femmes républicaines dans les prisons espagnoles de l'après-guerre. À travers des mots brodés, des objets quotidiens, des documents et un documentaire, l'exposition met en lumière leur double souffrance : en tant que femmes et républicaines. Les commissaires, Lidia Martín et Eugenia Navajo, s'inspirent d'une citation de María Zambrano pour évoquer la résilience et l'oppression systémique. L'exposition aborde également les théories eugénistes du psychiatre Vallejo-Nájera, qui déshumanisait ces femmes. Papillons rappelle une histoire douloureuse, essentielle pour comprendre les luttes passées et préserver la mémoire collective.",
-    link: "https://eladelantado.com/segovia/la-palabra-no-dicha-en-la-carcel/",
-    bgColor: "bg-fourtier-950"
-  }
+  videoUrl: "false",
+  videoLink: "false",
+  thumbnailUrl: pressImage,
+  posterText: "Communiqués de presse \"La palabra no dicha en La Cárcel.\"",
+  highlightedParagraph: "L'installation Papillons, présentée à La Cárcel_Centro de Creación de Segovia, explore la répression subie par les femmes républicaines dans les prisons espagnoles de l'après-guerre. À travers des mots brodés, des objets quotidiens, des documents et un documentaire, l'exposition met en lumière leur double souffrance : en tant que femmes et républicaines. Les commissaires, Lidia Martín et Eugenia Navajo, s'inspirent d'une citation de María Zambrano pour évoquer la résilience et l'oppression systémique. L'exposition aborde également les théories eugénistes du psychiatre Vallejo-Nájera, qui déshumanisait ces femmes. Papillons rappelle une histoire douloureuse, essentielle pour comprendre les luttes passées et préserver la mémoire collective.",
+  link: "https://eladelantado.com/segovia/la-palabra-no-dicha-en-la-carcel/",
+  bgColor: "bg-fourtier-950",
+  title: "Papillons : La mémoire des femmes républicaines",
+  description: "L'exposition 'Papillons. La palabra no dicha' à La Cárcel_Segovia Centro de Creación révèle le vécu des prisonnières républicaines sous le franquisme. Disponible jusqu'au 9 mai 2021, elle présente des telas bordadas, objets d'époque, photos et un documentaire poignant. L'installation tire son nom d'une citation d'Antonio Vallejo-Nájera, psychiatre eugéniste du régime. Un 'deshomenaje' lui est dédié, exposant ses théories perverses sur le 'gène rouge'. L'exposition aborde des thèmes comme la menstruation, la faim, le travail forcé et les violences sexuelles, offrant un témoignage puissant de la résilience de ces femmes face à l'oppression[1]."
+}
 ];
 ---
-
 <section>
   {projects.map((project) => (
     <div 
@@ -77,7 +72,19 @@ const projects = [
           <h2 class="text-2xl font-semibold text-primary-200 sm:text-3xl">
             {project.posterText}
           </h2>
-          <p class="mt-4 text-primary-300">{project.highlightedParagraph}</p>
+          <p class="mt-4 text-primary-300">
+  {project.highlightedParagraph.split('\n').map((line, index) => (
+    <>
+      {line.split(' ').map((word, i) => (
+        <>
+          {word}
+          {i < line.split(' ').length - 1 ? ' ' : ''}
+        </>
+      ))}
+      <br />
+    </>
+  ))}
+</p>
         </div>
 
         {/* Video */}
