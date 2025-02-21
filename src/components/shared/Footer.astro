@@ -12,37 +12,37 @@ const bottomLinks = [
     header: 'Navigation',
     links: [
       {
-        name: 'Accueil',
+        name: t('nav.home'),
         href: '/',
         isExternal: false,
       },
       {
-        name: 'À propos',
+        name: t('nav.about'),
         href: '/apropos',
         isExternal: false,
       },
       {
-        name: 'Films',
+        name: t('nav.films'),
         href: '/films',
         isExternal: false,
       },
       {
-        name: 'Longs Métrages',
+        name: t('nav.doculong'),
         href: '/doculongs',
         isExternal: false,
       },
       {
-        name: 'Courts Métrages',
+        name: t('nav.docucourts'),
         href: '/docucourts',
         isExternal: false,
       },
       {
-        name: 'Installations',
+        name: t('nav.exhibition'),
         href: '/installations',
         isExternal: false,
       },
       {
-        name: 'Contact',
+        name: t('nav.contact'),
         href: '/contact',
         isExternal: false,
       },
@@ -84,9 +84,10 @@ const bottomLinks = [
           class="h-8 w-auto sm:h-4 md:h-6 transition-all duration-200" 
         />
         <p class="text-primary-200/70 text-base">
-          Échos dans l'Ombre : Révéler ce que le Système Fait Taire.
+          {t("nav.footer.quote")}
         </p>
-        <p class="text-primary-200/70 text-sm">© 2025 Regeneralia</p>
+        <p class="text-primary-200/70 text-sm"><a href="https://regeneralia.com/" title="{t("nav.footer.copyright")}">&copy; 2025 Regeneralia</a>
+        </p>
       </div>
 
       <!-- Bottom links -->
