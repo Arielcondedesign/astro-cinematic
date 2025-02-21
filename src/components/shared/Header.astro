@@ -25,39 +25,39 @@ const languages = [
 const links = [
   {
     ref: '01',
-    name: 'Accueil',
+    name: t('nav.home'),
     href: '/',
   },
   {
     ref: '02',
-    name: 'À propos',
+    name: t('nav.about'),
     href: '/apropos',
   },
   {
     ref: '03',
-    name: 'Films',
+    name: t('nav.films'),
     href: '/films',
     submenu: [
       {
         ref: '03-a',
-        name: 'Longs Métrages',
+        name: t('nav.doculong'),
         href: '/doculongs',
       },
       {
         ref: '03-b',
-        name: 'Courts Métrages',
+        name: t('nav.docucourts'),
         href: '/docucourts',
       },
     ],
   },
   {
     ref: '04',
-    name: 'Installations',
+    name: t('nav.exhibition'),
     href: '/installations',
   },
   {
     ref: '05',
-    name: 'Contact',
+    name: t('nav.contact'),
     href: '/contact',
   },
 ];
@@ -210,9 +210,9 @@ const links = [
         <p
           class="text-primary-200/70 max-w-sm text-xl italic leading-loose"
         >
-          <span class="font-medium"></span> "Tant que tu n'atteins pas la vérité, tu ne peux la corriger. Donc, si tu ne peux la corriger, tu ne pourras jamais l'atteindre. En attendant, ne te résigne pas."
+          <span class="font-medium"></span> {t("nav.quote")}
           <br>
-          — José Saramago.
+          {t("nav.author")}
         </p>
       </div>
 
