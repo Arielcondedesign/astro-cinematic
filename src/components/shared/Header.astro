@@ -10,7 +10,6 @@ const t = useTranslations(currentLang as keyof typeof languageList);
 const currentPath = Astro.url.pathname;
 const pathWithoutLang = currentPath.replace(/^\/(fr|en|es)/, '') || '/';
 
-// Configurar los idiomas con las rutas correctas
 const languages = [
   { code: 'fr', name: t("lang.fr"), current: currentLang === 'fr' },
   { code: 'en', name: t("lang.en"), current: currentLang === 'en' },
@@ -18,47 +17,47 @@ const languages = [
 ].map(lang => ({
   ...lang,
   href: lang.code === 'fr' ? 
-    (pathWithoutLang === '/' ? '/' : pathWithoutLang) : 
-    `/${lang.code}${pathWithoutLang === '/' ? '' : pathWithoutLang}`
+    (pathWithoutLang === '/' ? '/' : pathWithoutLang) : // Sin prefijo para francés
+    `/${lang.code}${pathWithoutLang === '/' ? '' : pathWithoutLang}` // Con prefijo para otros idiomas
 }));
 
 const links = [
   {
     ref: '01',
     name: t('nav.home'),
-    href: '/',
+    href: currentLang === 'fr' ? '/' : `/${currentLang}`, // Caso especial para francés
   },
   {
     ref: '02',
     name: t('nav.about'),
-    href: '/apropos',
+    href: currentLang === 'fr' ? '/apropos' : `/${currentLang}/apropos`, // Caso especial para francés
   },
   {
     ref: '03',
     name: t('nav.films'),
-    href: '/films',
+    href: currentLang === 'fr' ? '/films' : `/${currentLang}/films`, // Caso especial para francés
     submenu: [
       {
         ref: '03-a',
         name: t('nav.doculong'),
-        href: '/doculongs',
+        href: currentLang === 'fr' ? '/doculongs' : `/${currentLang}/doculongs`, // Caso especial para francés
       },
       {
         ref: '03-b',
         name: t('nav.docucourts'),
-        href: '/docucourts',
+        href: currentLang === 'fr' ? '/docucourts' : `/${currentLang}/docucourts`, // Caso especial para francés
       },
     ],
   },
   {
     ref: '04',
     name: t('nav.exhibition'),
-    href: '/installations',
+    href: currentLang === 'fr' ? '/installations' : `/${currentLang}/installations`, // Caso especial para francés
   },
   {
     ref: '05',
     name: t('nav.contact'),
-    href: '/contact',
+    href: currentLang === 'fr' ? '/contact' : `/${currentLang}/contact`, // Caso especial para francés
   },
 ];
 
@@ -74,14 +73,14 @@ const links = [
     <!-- Brand logo -->
     <div class="flex">
       <a
-        href="/"
-        class="focus-visible:outline-primary-200 rounded-md focus-visible:outline focus-visible:outline-2"
-      >
-        <LogoJetee 
-          isHeader={true}
-          class="h-10 w-auto sm:h-6 md:h-8 transition-all duration-200" 
-        />
-      </a>
+      href={currentLang === 'fr' ? '/' : `/${currentLang}`} 
+      class="focus-visible:outline-primary-200 rounded-md focus-visible:outline focus-visible:outline-2"
+    >
+      <LogoJetee 
+        isHeader={true}
+        class="h-10 w-auto sm:h-6 md:h-8 transition-all duration-200" 
+      />
+    </a>
     </div>
 
     <!-- Actions -->
