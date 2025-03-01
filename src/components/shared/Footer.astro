@@ -13,37 +13,37 @@ const bottomLinks = [
     links: [
       {
         name: t('nav.home'),
-        href: '/',
+        href: currentLang === 'fr' ? '/' : `/${currentLang}`, 
         isExternal: false,
       },
       {
         name: t('nav.about'),
-        href: '/apropos',
+        href: currentLang === 'fr' ? '/apropos' : `/${currentLang}/apropos`,
         isExternal: false,
       },
       {
         name: t('nav.films'),
-        href: '/films',
+        href: currentLang === 'fr' ? '/films' : `/${currentLang}/films`,
         isExternal: false,
       },
       {
         name: t('nav.doculong'),
-        href: '/doculongs',
+        href: currentLang === 'fr' ? '/doculongs' : `/${currentLang}/doculongs`,
         isExternal: false,
       },
       {
         name: t('nav.docucourts'),
-        href: '/docucourts',
+        href: currentLang === 'fr' ? '/docucourts' : `/${currentLang}/docucourts`, // Caso especial para francés
         isExternal: false,
       },
       {
         name: t('nav.exhibition'),
-        href: '/installations',
+        href: currentLang === 'fr' ? '/installations' : `/${currentLang}/installations`, // Caso especial para francés
         isExternal: false,
       },
       {
         name: t('nav.contact'),
-        href: '/contact',
+        href: currentLang === 'fr' ? '/contact' : `/${currentLang}/contact`,
         isExternal: false,
       },
     ],
@@ -53,6 +53,8 @@ const bottomLinks = [
     links: [
       {
         name: t("nav.footer.legalpage1"),
+        href: currentLang === 'fr' ? '/confidentialite' : `/${currentLang}/confidentialite`,
+
         href: '/confidentialite',
         isExternal: false,
       },
