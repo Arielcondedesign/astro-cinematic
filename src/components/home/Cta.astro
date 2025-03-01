@@ -1,5 +1,10 @@
 ---
 import CtaImage from '../images/CtaImage.astro';  
+import { useTranslations } from "../../i18n/utils";
+import { languageList } from "../../i18n/ui";
+
+const currentLang = Astro.currentLocale || "fr";
+const t = useTranslations(currentLang as keyof typeof languageList);
 ---
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
@@ -9,18 +14,17 @@ import CtaImage from '../images/CtaImage.astro';
     >
       <div class="flex flex-col gap-4 sm:gap-6">
         <h2 class="mx-auto text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl max-w-full">
-          Donnez vie aux récits qui défient l'oubli
+          {t("home.cta.h2")}
         </h2>
         <p class="text-primary-200/70 mx-auto max-w-2xl text-lg">
-          La Jetée Films s'intéresse aux histoires humaines simples et créatives, aux messages cinématographiques qui n'ont pas besoin d'être expliqués.
+          {t("home.cta.p")}        
         </p>
       </div>
       <a
         href="/contact"
-        class="bg-secondary-400 hover:bg-secondary-700 focus-visible:outline-primary-400 text-primary-950 inline-flex items-center justify-center rounded-lg border border-transparent px-5 py-3 text-base font-bold text-primary-950 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-      >
-      Participez à notre démarche
-      </a>
+        class="bg-secondary-400 hover:bg-secondary-700 focus-visible:outline-primary-400 text-primary-950 inline-flex items-center justify-center rounded-lg border border-transparent px-5 py-3 text-base font-bold text-primary-950 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+      {t("home.cta.btn")}     
+    </a>
     </div>
   </div>
 </section>

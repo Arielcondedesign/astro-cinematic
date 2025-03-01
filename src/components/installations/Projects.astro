@@ -4,6 +4,11 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
 import posterImage from '../../assets/femmes-resistance-franquisme-memoire-poster.webp';
 import posterBarral1 from '../../assets/expo-carral-web.webp';
 import pressImage from '../../assets/Carcel-Centro-Creacion-Expo-Papillons_eladelantado.webp';
+import { useTranslations } from "../../i18n/utils";
+import { languageList } from "../../i18n/ui";
+
+const currentLang = Astro.currentLocale || "fr";
+const t = useTranslations(currentLang as keyof typeof languageList);
 
 
 // Función para validar URLs
@@ -16,30 +21,29 @@ function isValidUrl(url) {
   }
 }
 
-// Array de proyectos
 const projects = [
   {
     videoUrl: "false",
     videoLink: "false",
     thumbnailUrl: posterBarral1,
-    posterText: "Segovia - Paris 1937/2017",
-    highlightedParagraph: "Barral Buitres y Roca",
+    posterText: t("installations.projects.pt1"),
+    highlightedParagraph: t("installations.projects.hp1"),
     bgColor: "bg-fourtier-950"
   },
   {
     videoUrl: "false",
     videoLink: "https://www.youtube.com/watch?v=i4dSzxw8Iho",
     thumbnailUrl: posterImage,
-    posterText: "Installation de femmes républicaines dans les prisons de Franco",
-    highlightedParagraph: "PRISON POUR FEMMES, ESPAGNE L'HUMILATION \n Comme les gens \n \ L'IGNOMINIE  \n \Enquêtes psychologiques sur les femmes marxistes délinquantes \n DÉGRADATION \n en tant que mères : Dans les bras, les créatures sont mortes: mangées par la faim, les poux et la maladie \n LA MORTIFICATION \n En tant que femmes : La punition divine s'est faite chair dans notre corps\n LA DEPRECIATION \n En tant que citoyens : Nous sortons de prison et continuons à être méfiants",
+    posterText: t("installations.projects.pt2"),
+    highlightedParagraph: t("installations.projects.hp2"),
     bgColor: "bg-primary-950"
   },
   {
   videoUrl: "false",
   videoLink: "false",
   thumbnailUrl: pressImage,
-  posterText: "La palabra no dicha en La Cárcel",
-  highlightedParagraph: "L'un des pavillons de l'ancienne prison provinciale, aujourd'hui Centre de création municipale, abrite l'installation « Papillons », dans laquelle Lidia Martín montre la répression des prisonnières républicaines pendant la période d'après-guerre.",
+  posterText: t("installations.projects.pt3"),
+  highlightedParagraph: t("installations.projects.hp3"),
   link: "https://eladelantado.com/segovia/la-palabra-no-dicha-en-la-carcel/",
   bgColor: "bg-fourtier-950",
   
@@ -106,10 +110,10 @@ const projects = [
                 class="absolute inset-0 z-10 flex items-center justify-center bg-primary-950/10 hover:bg-primary-950/20 transition-colors group"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Voir la vidéo sur YouTube: ${project.posterText}`}
-              >
+                aria-label={t("aria.player.youtube.label", { videoTitle: project.posterText })}
+                >
                 <div class="p-4 rounded-full bg-primary-400/10 group-hover:bg-primary-400/20 transition-colors">
-                  <span class="sr-only">Voir sur YouTube: {project.posterText}</span>
+                  <span class="sr-only">{t("aria.player.yotube.span")} {project.posterText}</span>
                   <svg 
                     class="w-12 h-12 text-primary-200" 
                     viewBox="0 0 24 24" 
@@ -132,7 +136,7 @@ const projects = [
               target="_blank" 
               rel="noopener noreferrer"
               class="text-primary-200 hover:text-primary-300 underline">
-              En savoir plus
+              {t("installations.projects.link")}
             </a>
           </div>
         )}

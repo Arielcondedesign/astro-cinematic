@@ -9,7 +9,7 @@ const t = useTranslations(currentLang as keyof typeof languageList);
 
 const bottomLinks = [
 {
-    header: 'Navigation',
+    header: t("nav.footer.title1"),
     links: [
       {
         name: t('nav.home'),
@@ -49,17 +49,17 @@ const bottomLinks = [
     ],
   },
   {
-    header: 'Mentions légales',
+    header: t("nav.footer.title2"),
     links: [
       {
-        name: 'Politique de Confidentialité',
+        name: t("nav.footer.legalpage1"),
         href: '/confidentialite',
         isExternal: false,
       },
     ],
   },
   {
-    header: 'Réseaux sociaux',
+    header: t("nav.footer.title3"),
     links: [
       {
         name: 'Vimeo',
@@ -86,8 +86,13 @@ const bottomLinks = [
         <p class="text-primary-200/70 text-base">
           {t("nav.footer.quote")}
         </p>
-        <p class="text-primary-200/70 text-sm"><a href="https://regeneralia.com/" title="{t("nav.footer.copyright")}">&copy; 2025 Regeneralia</a>
-        </p>
+        <p class="text-primary-200/70 text-sm">
+          <a href="https://regeneralia.com/" 
+          aria-label={t("nav.footer.copyright", currentLang)} 
+          title={t("nav.footer.copyright", currentLang)}>
+          &copy; 2025 Regeneralia
+        </a>      
+      </p>
       </div>
 
       <!-- Bottom links -->

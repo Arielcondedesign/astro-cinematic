@@ -2,6 +2,12 @@
 import { Vimeo } from '@astro-community/astro-embed-vimeo';
 import { YouTube } from '@astro-community/astro-embed-youtube';
 
+import { useTranslations } from '../../i18n/utils';
+import { languageList } from "../../i18n/ui";
+
+const currentLang = Astro.currentLocale || "fr";
+const t = useTranslations(currentLang as keyof typeof languageList);
+
 const { 
 title, 
 description, 
@@ -10,7 +16,7 @@ year,
 
 const projects = [
 {
-    title: "Films en pre-production :",
+    title: t("longs.projects.title1"),
     description: "Cerdos, la guerre n'est pas finie.",
     videoUrl: "https://vimeo.com/835888678",
     videoLink: "false",
@@ -20,7 +26,7 @@ const projects = [
 },
 {
     title: "Memorias de la Esperanza",
-    description: "Musée des sciences naturelles de Ciudad de la Plata, Argentine. À travers des plaques de verre de 1905, nous voyageons jusqu'à son origine. Les villes d'origine de Jujui racontent leur recherche de mémoire.",
+    description: t("longs.projects.details.p2"),
     videoUrl: "https://vimeo.com/535572445",
     videoLink: "false",
     thumbnailUrl: "url-de-votre-image-1",
@@ -29,7 +35,7 @@ const projects = [
 },
 {
     title: "El retorno del avefría",
-    description: "Le théâtre humanise. Voyage d'un oiseau: un vanneau, qui atteint une ville et trouve ses rues pleines d'activité artistique. Une ville de pierre, la tendresse du théâtre.",
+    description: t("longs.projects.details.p3"),
     videoUrl: "false",
     videoLink: "https://www.youtube.com/watch?v=h8q49pSEIxs",
     thumbnailUrl: "url-de-votre-image-2",
@@ -38,7 +44,7 @@ const projects = [
 },
 {
     title: "Esperando a Godot",
-    description: "Film sur Fernando Urdiales, un grand dramaturge castillan et leonés décédé à Valladolid en 2010.",
+    description: t("longs.projects.details.p4"),
     videoUrl: "https://vimeo.com/535572447",
     thumbnailUrl: "url-de-votre-image-3",
     year: "2014",
@@ -46,7 +52,7 @@ const projects = [
 },
 {
     title: "Trailer Agapito Marazuela, La statue brisée",
-    description: "Portrait d'un musicien universel: Agapito Marazuela. Grand homme qui a eu une vie qui montre les circonstances historiques du 20e siècle en Espagne: joie pour la culture, dictatures, répression, misère, peur, oubli.",
+    description: t("longs.projects.details.p5"),
     videoUrl: "https://vimeo.com/508785843",
     thumbnailUrl: "url-de-votre-image-3",
     year: "2019",
@@ -78,9 +84,9 @@ const projects = [
                 <p>{project.description}</p>
                 
                 <div class="project-metadata mt-4">
-                  <h3 class="font-bold">Détails du projet</h3>
+                  <h3 class="font-bold">{t("projects.details.h3")}</h3>
                   <ul class="list-disc pl-5">
-                    <li>Año: {project.year}</li>
+                    <li>{t("projects.details.year")}: {project.year}</li>
                   </ul>
                 </div>
               </div>

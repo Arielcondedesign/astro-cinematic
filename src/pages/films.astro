@@ -3,12 +3,14 @@ import Team from '../components/films/Team.astro';
 import Heading from '../components/films/Heading.astro';
 import EntriesCards from '../components/films/EntriesCards.astro';
 import Layout from '../layouts/Layout.astro';
+import { useTranslations } from "../i18n/utils";
+import { languageList } from "../i18n/ui";
+
+const currentLang = Astro.currentLocale || "fr";
+const t = useTranslations(currentLang as keyof typeof languageList);
 ---
 
-<Layout
-  description="Explorez notre collection de films documentaires qui capturent les voix silenciées. Chaque film est un témoignage, chaque image un acte de résilience."
-  title="La Jetée Films | Documentaires et Courts-métrages"
->
+<Layout title={t("films.title.tag")} description={t("films.meta.description")}>
   <Heading />
   <EntriesCards />
   <Team />

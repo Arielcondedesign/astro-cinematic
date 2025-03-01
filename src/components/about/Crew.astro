@@ -6,37 +6,42 @@ import bastianImage from '../../assets/bastian-sinse-post-production.webp';
 import theoImage from '../../assets/theo-monteur-video.webp';
 import juanImage from '../../assets/juan-manuel-rosas-cameraman.webp';
 import eduImage from '../../assets/eduardo-argentinien-monteur-video.webp';
+import { useTranslations } from "../../i18n/utils";
+import { languageList } from "../../i18n/ui";
+
+const currentLang = Astro.currentLocale || "fr";
+const t = useTranslations(currentLang as keyof typeof languageList);
 
 const teamMembers = [
 {
     image: lidiaImage,
     name: "Lidia Martín Merino",
-    role: "Directrice"
+    role: t("about.crew.tm.role1")
   },
   {
     image: bastianImage,
     name: "Bastian Sinsé",
-    role: "Post-Production Audiovisuel"
+    role: t("about.crew.tm.role2")
   },
   {
     image: juanImage,
     name: "Juan Manuel Rosas",
-    role: "Cadreur, Directeur Adjoint"
+    role: t("about.crew.tm.role3")
   },
   {
     image: theoImage,
     name: "Théo Heldmann",
-    role: "Monteur"
+    role: t("about.crew.tm.role4")
   },
   {
     image: africaImage,
     name: "Africa Bayón",
-    role: "Scénographe"
+    role: t("about.crew.tm.role5")
   },
   {
     image: eduImage,
     name: "Eduardo López, Argentina",
-    role: "Monteur"
+    role: t("about.crew.tm.role6")
   },
 ];
 ---
@@ -44,7 +49,7 @@ const teamMembers = [
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="sm:space-8 space-y-12">
-      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Collectif La Jetée</h2>
+      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">{t("about.crew.h2")}</h2>
       <ul role="list" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {
           teamMembers.map(({ name, image, role }) => (

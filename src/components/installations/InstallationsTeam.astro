@@ -2,13 +2,17 @@
 import { Image } from 'astro:assets';
 import lidiaImage from '../../assets/lidia-martin-merino-directrice-documentaire.webp';
 import africaImage from '../../assets/bayon-africa-scenographe.webp';
+import { useTranslations } from "../../i18n/utils";
+import { languageList } from "../../i18n/ui";
+
+const currentLang = Astro.currentLocale || "fr";
+const t = useTranslations(currentLang as keyof typeof languageList);
 
 const teamMembers = [
   {
     image: lidiaImage,
     name: "Lidia Martín Merino",
-    role: "Directrice et Réalisatrice",
-    bio: "Architecte de mémoires documentaires, engagée dans la capture des voix silenciées.",
+    role: t("installations.team.role1"),
     socials: {
       x: "#",
       linkedin: "#"
@@ -17,8 +21,7 @@ const teamMembers = [
   {
     image: africaImage,
     name: "Africa Bayón",
-    role: "Scénographe",
-    bio: "Artisan visuel des histoires passées sous silence, notre scénographe donne forme aux souvenirs et aux rêves des opprimés.",
+    role: t("installations.team.role2"),
     socials: {
       x: "#",
       linkedin: "#"
@@ -31,29 +34,27 @@ const teamMembers = [
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-12">
       <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
-        L'Équipe d'Installations
+        {t("installations.team.h2")}
       </h2>
       <p class="mt-4 text-lg text-gray-600">
-        Les architectes des narratives documentaires qui défient le silence
+        {t("installations.team.p")}
       </p>
     </div>
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-      {teamMembers.map(({ name, image, role, bio, socials }) => (
+      {teamMembers.map(({ name, image, role, socials }) => (
         <div class="bg-primary-400/10 shadow-lg rounded-lg overflow-hidden">
-          {/* Usar el componente Image de astro:assets */}
           <Image
             src={image}
             alt={name}
             class="w-full h-64 object-cover object-center"
-            width={400} // Ajusta el ancho según sea necesario
-            height={256} // Ajusta la altura según sea necesario
-            loading="lazy" // Carga diferida para mejorar el rendimiento
+            width={400} 
+            height={256}
+            loading="lazy" 
           />
           <div class="p-6">
             <h3 class="text-xl font-semibold text-gray-900">{name}</h3>
             <p class="text-sm text-gray-500 mt-1">{role}</p>
-            <p class="text-gray-600 mt-4">{bio}</p>
             <div class="mt-4 flex space-x-4">
               <a href={socials.x} class="text-gray-400 hover:text-black transition">X</a>
               <a href={socials.linkedin} class="text-gray-400 hover:text-blue-600 transition">LinkedIn</a>

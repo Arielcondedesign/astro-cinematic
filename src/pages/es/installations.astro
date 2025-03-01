@@ -1,0 +1,20 @@
+---
+import Heading from '../../components/installations/Heading.astro';
+import Projects from '../../components/installations/Projects.astro';
+import Gallerie from '../../components/installations/Gallerie.astro';
+import Layout from '../../layouts/Layout.astro';
+import InstallationsTeam from '../../components/installations/InstallationsTeam.astro';
+import { useTranslations } from "../../i18n/utils";
+import { languageList } from "../../i18n/ui";
+
+const currentLang = Astro.currentLocale || "es";
+const t = useTranslations(currentLang as keyof typeof languageList);
+---
+
+
+<Layout title={t("installations.title.tag")} description={t("installations.meta.description")}>
+  <Heading />
+  <Projects />
+  <Gallerie />
+  <InstallationsTeam />
+</Layout>

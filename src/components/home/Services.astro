@@ -1,22 +1,25 @@
 ---
+import { useTranslations } from "../../i18n/utils";
+import { languageList } from "../../i18n/ui";
+
+const currentLang = Astro.currentLocale || "fr";
+const t = useTranslations(currentLang as keyof typeof languageList);
+
 const services = [
   {
     step: '01',
-    name: 'Longs-métrages',
-    description:
-      'Ces œuvres cinématographiques approfondies explorent la réalité sur plus d\'une heure de projection.',
+    name: t("home.services.01.name"),
+    description: t("home.services.01.p"),
   },
   {
     step: '02',
-    name: 'Courts-métrages',
-    description:
-      'En moins de soixante minutes, ces créations concises capturent l\'essence de sujets authentiques.',
+    name: t("home.services.02.name"),
+    description: t("home.services.02.p"),
   },
   {
     step: '03',
-    name: 'Installations',
-    description:
-      'Nos installations artistiques transforment l\'espace et donnent matière à penser.',
+    name: t("home.services.03.name"),
+    description: t("home.services.03.p"),
   },
 ];
 ---
@@ -24,7 +27,7 @@ const services = [
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-16">
     <div class="flex flex-col gap-12 sm:gap-16">
-      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Nos Créations</h2>
+      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">{t("home.services.h2")}</h2>
       <div class="grid gap-8 lg:grid-cols-3">
         {
           services.map((service) => (

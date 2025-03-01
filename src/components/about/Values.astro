@@ -1,26 +1,24 @@
+---
+import { useTranslations } from "../../i18n/utils";
+import { languageList } from "../../i18n/ui";
+
+const currentLang = Astro.currentLocale || "fr";
+const t = useTranslations(currentLang as keyof typeof languageList);
+---
+
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="grid gap-12 lg:grid-cols-3 lg:gap-8">
-      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Nos Valeurs Fondamentales</h2>
+      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">{t("about.values.h2")}</h2>
       <div class="flex flex-col items-start gap-8 sm:gap-10 lg:col-span-2">
         <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-          La Jetée Films a un bout, que le documentaire de création soit au service de contenus
-puissants, tente de promouvoir les thèmes de l&#39;artiste en tant qu&#39;éléments
-fondamentaux d&#39;un engagement historique, social, esthétique et politique.
-L&#39;expression « post-vérité » est absente de notre vocabulaire professionnel.
-
+{t("about.values.p1")}</p>
 <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-Notre parcours comprend la production de longs métrages, de courts métrages et
-d&#39;expositions.</p>
+{t("about.values.p2")}</p>
 <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-Notre volonté s&#39;articule autour d&#39;un axe commun, celui d&#39;offrir au public un regard
-artistique qui montre que notre société mérite d&#39;être changée. Un film de qualité, avec
-une narration digne d&#39;intérêt, peut forger une meilleure qualité humaine.</p>
+{t("about.values.p3")}</p>
 <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-Dans ce monde capitaliste où la famine et les guerres obligent les gens à se déplacer et
-où beaucoup d&#39;entre eux sont persécutés, il est possible que certains d&#39;entre eux ont
-tort, mais il est certain que tous ses persécuteurs ont tort.
-</p>    
+  {t("about.values.p4")}</p>       
       </div>
     </div>
   </div>

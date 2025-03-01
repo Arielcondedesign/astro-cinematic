@@ -1,6 +1,11 @@
 ---
 import { Vimeo } from '@astro-community/astro-embed-vimeo';
 import { YouTube } from '@astro-community/astro-embed-youtube';
+import { useTranslations } from "../../i18n/utils";
+import { languageList } from "../../i18n/ui";
+
+const currentLang = Astro.currentLocale || "fr";
+const t = useTranslations(currentLang as keyof typeof languageList);
 
 const { 
 title, 
@@ -12,7 +17,7 @@ category
 const projects = [
 {
     title: "El túnel",
-    description: "À partir des voix des femmes victimes de maltraitance, un discours d'images poétiques s'articule.",
+    description: t("courts.projects.details.p1"),
     videoUrl: "https://vimeo.com/492102124",
     videoLink: "false",
     thumbnailUrl: "url-de-votre-image-1",
@@ -22,7 +27,7 @@ const projects = [
 },
 {
     title: "Laberinto de Prisiones",
-    description: "Entretiens avec deux hommes en prison pour avoir maltraité leurs partenaires.",
+    description: t("courts.projects.details.p2"),
     videoUrl: "false",
     videoLink: "https://www.youtube.com/watch?v=2OYSBhMoU8Q",
     thumbnailUrl: "url-de-votre-image-2",
@@ -32,7 +37,7 @@ const projects = [
 },
 {
     title: "Las invitadas",
-    description: "Court métrage sur trois femmes immigrées en Espagne. Leur humanité nous montre que leur vie peut être la nôtre.",
+    description: t("courts.projects.details.p3"),
     videoUrl: "https://vimeo.com/1051476884",
     videoLink: "false",
     thumbnailUrl: "url-de-votre-image-3",
@@ -42,7 +47,7 @@ const projects = [
 },
 {
     title: "El engaño del colibrí",
-    description: "Court métrage résultant d'un voyage à la Triple Frontière et de la rencontre des habitants de ces terres contre la richesse des grandes sociétés forestières.",
+    description: t("courts.projects.details.p4"),
     videoUrl: "false",
     videoLink: "https://www.youtube.com/watch?v=qUHAiTgspDc&=1s",
     thumbnailUrl: "url-de-votre-image-3",
@@ -75,11 +80,11 @@ const projects = [
               <div class="mt-4 text-priamry-700">
                 <p>{project.description}</p>
                 
+                
                 <div class="project-metadata mt-4">
-                  <h3 class="font-bold">Détails du projet</h3>
+                  <h3 class="font-bold">{t("projects.details.h3")}</h3>
                   <ul class="list-disc pl-5">
-                    <li>Año: {project.year}</li>
-                    <li>Categoría: {project.category}</li>
+                    <li>{t("projects.details.year")}: {project.year}</li>
                   </ul>
                 </div>
               </div>

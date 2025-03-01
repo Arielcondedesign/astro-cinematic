@@ -3,12 +3,17 @@ import { Image } from 'astro:assets';
 import lidiaImage from '../../assets/lidia-martin-merino-directrice-documentaire.webp';
 import bastianImage from '../../assets/bastian-sinse-post-production.webp';
 import juanImage from '../../assets/juan-manuel-rosas-cameraman.webp';
+import { useTranslations } from "../../i18n/utils";
+import { languageList } from "../../i18n/ui";
+
+const currentLang = Astro.currentLocale || "fr";
+const t = useTranslations(currentLang as keyof typeof languageList);
 
 const teamMembers = [
   {
     image: lidiaImage,
     name: "Lidia Martín Merino",
-    role: "Directrice et Réalisatrice",
+    role: t("films.team.role1"),
     bio: "Architecte de mémoires documentaires, engagée dans la capture des voix silenciées.",
     socials: {
       x: "#",
@@ -18,7 +23,7 @@ const teamMembers = [
   {
     image: bastianImage,
     name: "Bastian Sinsé",
-    role: "Post-Production Audiovisuel, Monteur et Etalonneur",
+    role: t("films.team.role2"),
     bio: "Experte en narrations de résistance, transformant chaque histoire en acte de résilience.",
     socials: {
       x: "#",
@@ -28,7 +33,7 @@ const teamMembers = [
   {
     image: juanImage,
     name: "Juan Manuel Rosas",
-    role: "Camera-man, Directeur Adjoint",
+    role: t("films.team.role3"),
     bio: "Créateur visuel qui donne forme aux récits invisibles et marginalisés.",
     socials: {
       x: "#",
@@ -41,9 +46,7 @@ const teamMembers = [
 <section class="bg-priamry-50 py-16 px-4 sm:px-6 lg:px-8">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold text-priamry-900 sm:text-4xl">
-        L'Équipe de La Jetée Films
-      </h2>
+      <h2 class="text-3xl font-bold text-priamry-900 sm:text-4xl">{t("films.team.h2")}</h2>
     </div>
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-3">

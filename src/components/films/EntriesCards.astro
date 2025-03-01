@@ -1,6 +1,11 @@
 ---
 import LongFilmImage from '../images/LongFilmImage.astro';    
 import ShortFilmImage from '../images/ShortFilmImage.astro';
+import { useTranslations } from '../../i18n/utils';
+import { languageList } from "../../i18n/ui";
+
+const currentLang = Astro.currentLocale || "fr";
+const t = useTranslations(currentLang as keyof typeof languageList);
 ---
 
 <section class="py-16 sm:py-20">
@@ -9,18 +14,18 @@ import ShortFilmImage from '../images/ShortFilmImage.astro';
       <div class="bg-primary-400/10 shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105">
         <LongFilmImage class="w-full h-48 object-cover" />
         <div class="p-6">
-          <h2 class="text-2xl font-bold mb-2">Longs Métrages</h2>
-          <p class="text-priamry-700 mb-4">Plongez dans nos documentaires longs formats pour une exploration approfondie de récits fascinants.</p>
-          <a href="/doculongs" class="bg-secondary-900 hover:bg-secondary-700 focus-visible:outline-primary-400 text-primary-100 inline-flex items-center justify-center rounded-lg border border-transparent px-5 py-3 text-base font-medium text-primary-100 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Découvrir maintenant</a>    
+          <h2 class="text-2xl font-bold mb-2">{t("films.cards.h2.longs")}</h2>
+          <p class="text-priamry-700 mb-4">{t("films.cards.p.longs")}</p>
+          <a href="/doculongs" class="bg-secondary-900 hover:bg-secondary-700 focus-visible:outline-primary-400 text-primary-100 inline-flex items-center justify-center rounded-lg border border-transparent px-5 py-3 text-base font-medium text-primary-100 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">{t("films.cards.btn.longs")}</a>    
         </div>
       </div>
       
       <div class="bg-primary-400/10 shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105">
         <ShortFilmImage class="w-full h-48 object-cover" />
         <div class="p-6">
-          <h2 class="text-2xl font-bold mb-2">Courts Métrages</h2>
-          <p class="text-priamry-700 mb-4">Explorez nos récits courts pour des histoires percutantes qui captivent en un instant.</p>
-          <a href="/docucourts" class="bg-tertiary-900 hover:bg-tertiary-700 focus-visible:outline-primary-400 text-primary-100 inline-flex items-center justify-center rounded-lg border border-transparent px-5 py-3 text-base font-medium text-primary-100 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Regarder les courts métrages</a>    
+          <h2 class="text-2xl font-bold mb-2">{t("films.cards.h2.courts")}</h2>
+          <p class="text-priamry-700 mb-4">{t("films.cards.p.courts")}</p>
+          <a href="/docucourts" class="bg-tertiary-900 hover:bg-tertiary-700 focus-visible:outline-primary-400 text-primary-100 inline-flex items-center justify-center rounded-lg border border-transparent px-5 py-3 text-base font-medium text-primary-100 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">{t("films.cards.btn.courts")}</a>    
         </div>
       </div>
     </div>

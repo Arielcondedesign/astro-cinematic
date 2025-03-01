@@ -1,9 +1,17 @@
+---
+import { useTranslations } from "../../i18n/utils";
+import { languageList } from "../../i18n/ui";
+
+const currentLang = Astro.currentLocale || "fr";
+const t = useTranslations(currentLang as keyof typeof languageList);
+---
+
 <section class="bg-cover bg-center py-16 sm:py-20" style="background-image: url('../../assets/femmes-resistance-franquisme-memoire-ombre.webp');">
   <div class="bg-primary-950/70 mx-auto max-w-2xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="flex flex-col gap-4 sm:gap-6">
-      <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl text-primary-50">La Jetée Films : Installations Artistiques & Documentaires</h1>
+      <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl text-primary-50">{t("installations.head.h1")}</h1>
       <p class="text-primary-200 mx-auto max-w-xl text-lg sm:text-xl">
-        Dans les interstices de l'histoire silencieuse, nos corps racontent ce que les mots n'osent avouer. Chaque fragment est un lambeau de mémoire arrachée au silence des geôles franquistes, où la dignité des femmes a survécu à la violence.
+        {t("installations.head.p")}
       </p>
     </div>
   </div>

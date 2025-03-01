@@ -1,0 +1,18 @@
+---
+import Heading from '../../components/about/Heading.astro';
+import Mission from '../../components/about/Mission.astro';
+import Crew from '../../components/about/Crew.astro';
+import Values from '../../components/about/Values.astro';
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations } from "../../i18n/utils";
+import { languageList } from "../../i18n/ui";
+const currentLang = Astro.currentLocale || "en";
+const t = useTranslations(currentLang as keyof typeof languageList);
+---
+
+<Layout title={t("about.title.tag")} description={t("about.meta.description")}>
+  <Heading />
+  <Mission />
+  <Values />
+  <Crew />
+</Layout>

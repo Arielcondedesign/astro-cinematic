@@ -1,0 +1,15 @@
+---
+import ContactForm from '../../components/contact/ContactForm.astro';
+import ContactInfo from '../../components/contact/ContactInfo.astro';
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations } from "../../i18n/utils";
+import { languageList } from "../../i18n/ui";
+
+const currentLang = Astro.currentLocale || "es";
+const t = useTranslations(currentLang as keyof typeof languageList);
+---
+
+<Layout title={t("contact.title.tag")} description={t("contact.meta.description")}>
+  <ContactInfo />
+  <ContactForm />
+</Layout>
